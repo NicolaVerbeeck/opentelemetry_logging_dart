@@ -1,0 +1,5 @@
+.idea/
+.dart_tool/
+test/
+support/
+coverage.lcov
