@@ -60,6 +60,7 @@ void main() {
       logger.info('i');
       logger.warn('w');
       logger.error('e');
+      await pumpEventQueue();
       await logger.flush();
       final all = backend.sentBatches.expand((b) => b).toList();
       expect(all.map((e) => e.level), [LogLevel.debug, LogLevel.info, LogLevel.warn, LogLevel.error]);
