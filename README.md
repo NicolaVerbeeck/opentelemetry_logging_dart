@@ -1,8 +1,8 @@
 # OpenTelemetry Logging Dart
 
 [![Pub Version](https://img.shields.io/pub/v/opentelemetry_logging.svg)](https://pub.dev/packages/opentelemetry_logging)
-[![Pub Points](https://badges.bar/opentelemetry_logging/pub%20points)](https://pub.dev/packages/opentelemetry_logging/score)
-[![Coverage](https://codecov.io/gh/NicolaVerbeeck/opentelemetry_logging_dart/branch/main/graph/badge.svg)](https://codecov.io/gh/your-org/opentelemetry_logging_dart)
+[![Coverage](https://codecov.io/gh/NicolaVerbeeck/opentelemetry_logging_dart/branch/main/graph/badge.svg)](https://codecov.io/gh/NicolaVerbeeck/opentelemetry_logging_dart)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/NicolaVerbeeck/opentelemetry_logging_dart/badge)](https://scorecard.dev/viewer/?uri=github.com/NicolaVerbeeck/opentelemetry_logging_dart)
 
 A Dart package for logging with OpenTelemetry, supporting gRPC backends and seamless integration with observability platforms.
 
