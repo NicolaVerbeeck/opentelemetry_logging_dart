@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 
+import 'package:http/http.dart' as http;
 import 'package:opentelemetry_logging/src/backend/open_telemetry_backend.dart';
 import 'package:opentelemetry_logging/src/model/log_entry.dart';
 
@@ -9,7 +9,7 @@ import 'package:opentelemetry_logging/src/model/log_entry.dart';
 class OpenTelemetryHttpBackend implements OpenTelemetryBackend {
   final Uri _endpoint;
 
-  final HttpClient _client;
+  final http.Client _client;
   final bool _ownClient;
   final FutureOr<void> Function({
     required int statusCode,
@@ -21,13 +21,13 @@ class OpenTelemetryHttpBackend implements OpenTelemetryBackend {
   /// it will NOT be closed automatically upon [dispose].
   OpenTelemetryHttpBackend({
     required Uri endpoint,
-    HttpClient? client,
+    http.Client? client,
     FutureOr<void> Function({
       required int statusCode,
       required String body,
     })? onPostError,
   })  : _endpoint = endpoint,
-        _client = client ?? HttpClient(),
+        _client = client ?? http.Client(),
         _ownClient = client == null,
         _onPostError = onPostError;
 
@@ -52,21 +52,20 @@ class OpenTelemetryHttpBackend implements OpenTelemetryBackend {
         }
       ]
     });
-    final req = await _client.postUrl(_endpoint);
-    req.headers.contentType = ContentType.json;
-    req.write(payload);
-    final res = await req.close();
+    final res = await _client.post(
+      _endpoint,
+      headers: {'Content-Type': 'application/json'},
+      body: payload,
+    );
 
     if (res.statusCode < 200 || res.statusCode >= 300) {
       if (_onPostError != null) {
-        final responseBody = await res.transform(utf8.decoder).join();
         await _onPostError(
           statusCode: res.statusCode,
-          body: responseBody,
+          body: res.body,
         );
         return;
       }
     }
-    await res.drain();
   }
 }

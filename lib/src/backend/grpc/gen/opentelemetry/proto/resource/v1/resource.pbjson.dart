@@ -17,9 +17,29 @@ import 'dart:typed_data' as $typed_data;
 const Resource$json = {
   '1': 'Resource',
   '2': [
-    {'1': 'attributes', '3': 1, '4': 3, '5': 11, '6': '.opentelemetry.proto.common.v1.KeyValue', '10': 'attributes'},
-    {'1': 'dropped_attributes_count', '3': 2, '4': 1, '5': 13, '10': 'droppedAttributesCount'},
-    {'1': 'entity_refs', '3': 3, '4': 3, '5': 11, '6': '.opentelemetry.proto.common.v1.EntityRef', '10': 'entityRefs'},
+    {
+      '1': 'attributes',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.opentelemetry.proto.common.v1.KeyValue',
+      '10': 'attributes'
+    },
+    {
+      '1': 'dropped_attributes_count',
+      '3': 2,
+      '4': 1,
+      '5': 13,
+      '10': 'droppedAttributesCount'
+    },
+    {
+      '1': 'entity_refs',
+      '3': 3,
+      '4': 3,
+      '5': 11,
+      '6': '.opentelemetry.proto.common.v1.EntityRef',
+      '10': 'entityRefs'
+    },
   ],
 };
 
@@ -29,4 +49,3 @@ final $typed_data.Uint8List resourceDescriptor = $convert.base64Decode(
     '1tb24udjEuS2V5VmFsdWVSCmF0dHJpYnV0ZXMSOAoYZHJvcHBlZF9hdHRyaWJ1dGVzX2NvdW50'
     'GAIgASgNUhZkcm9wcGVkQXR0cmlidXRlc0NvdW50EkkKC2VudGl0eV9yZWZzGAMgAygLMigub3'
     'BlbnRlbGVtZXRyeS5wcm90by5jb21tb24udjEuRW50aXR5UmVmUgplbnRpdHlSZWZz');
-

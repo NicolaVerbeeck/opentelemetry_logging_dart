@@ -13,7 +13,7 @@ import 'grpc/gen/opentelemetry/proto/resource/v1/resource.pb.dart'
 
 /// An OpenTelemetry backend that sends logs to a specified gRPC endpoint.
 class OpenTelemetryGrpcBackend implements OpenTelemetryBackend {
-  final ClientChannel _channel;
+  final ClientChannel? _channel;
   late final LogsServiceClient _client;
   final bool _ownChannel;
 
@@ -32,7 +32,7 @@ class OpenTelemetryGrpcBackend implements OpenTelemetryBackend {
         ),
         _ownChannel = true {
     _client = LogsServiceClient(
-      _channel,
+      _channel!,
     );
   }
 
@@ -43,6 +43,14 @@ class OpenTelemetryGrpcBackend implements OpenTelemetryBackend {
   })  : _channel = channel,
         _client = LogsServiceClient(channel),
         _ownChannel = false;
+
+  /// Creates an OpenTelemetry backend that uses an existing [client].
+  /// The client will not be closed automatically upon [dispose].
+  OpenTelemetryGrpcBackend.withClient({
+    required LogsServiceClient client,
+  })  : _client = client,
+        _ownChannel = false,
+        _channel = null;
 
   @override
   Future<void> sendLogs(List<LogEntry> entries) async {
@@ -69,7 +77,7 @@ class OpenTelemetryGrpcBackend implements OpenTelemetryBackend {
   @override
   Future<void> dispose() async {
     if (_ownChannel) {
-      await _channel.shutdown();
+      await _channel?.shutdown();
     }
   }
 }
