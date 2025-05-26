@@ -21,18 +21,21 @@ export 'logs_service.pb.dart';
 
 @$pb.GrpcServiceName('opentelemetry.proto.collector.logs.v1.LogsService')
 class LogsServiceClient extends $grpc.Client {
-  static final _$export = $grpc.ClientMethod<$0.ExportLogsServiceRequest, $0.ExportLogsServiceResponse>(
+  static final _$export = $grpc.ClientMethod<$0.ExportLogsServiceRequest,
+          $0.ExportLogsServiceResponse>(
       '/opentelemetry.proto.collector.logs.v1.LogsService/Export',
       ($0.ExportLogsServiceRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $0.ExportLogsServiceResponse.fromBuffer(value));
+      ($core.List<$core.int> value) =>
+          $0.ExportLogsServiceResponse.fromBuffer(value));
 
   LogsServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
-      : super(channel, options: options,
-        interceptors: interceptors);
+      : super(channel, options: options, interceptors: interceptors);
 
-  $grpc.ResponseFuture<$0.ExportLogsServiceResponse> export($0.ExportLogsServiceRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$0.ExportLogsServiceResponse> export(
+      $0.ExportLogsServiceRequest request,
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$export, request, options: options);
   }
 }
@@ -42,18 +45,22 @@ abstract class LogsServiceBase extends $grpc.Service {
   $core.String get $name => 'opentelemetry.proto.collector.logs.v1.LogsService';
 
   LogsServiceBase() {
-    $addMethod($grpc.ServiceMethod<$0.ExportLogsServiceRequest, $0.ExportLogsServiceResponse>(
+    $addMethod($grpc.ServiceMethod<$0.ExportLogsServiceRequest,
+            $0.ExportLogsServiceResponse>(
         'Export',
         export_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $0.ExportLogsServiceRequest.fromBuffer(value),
+        ($core.List<$core.int> value) =>
+            $0.ExportLogsServiceRequest.fromBuffer(value),
         ($0.ExportLogsServiceResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$0.ExportLogsServiceResponse> export_Pre($grpc.ServiceCall call, $async.Future<$0.ExportLogsServiceRequest> request) async {
+  $async.Future<$0.ExportLogsServiceResponse> export_Pre($grpc.ServiceCall call,
+      $async.Future<$0.ExportLogsServiceRequest> request) async {
     return export(call, await request);
   }
 
-  $async.Future<$0.ExportLogsServiceResponse> export($grpc.ServiceCall call, $0.ExportLogsServiceRequest request);
+  $async.Future<$0.ExportLogsServiceResponse> export(
+      $grpc.ServiceCall call, $0.ExportLogsServiceRequest request);
 }

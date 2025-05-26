@@ -63,7 +63,8 @@ void main() {
       await pumpEventQueue();
       await logger.flush();
       final all = backend.sentBatches.expand((b) => b).toList();
-      expect(all.map((e) => e.level), [LogLevel.debug, LogLevel.info, LogLevel.warn, LogLevel.error]);
+      expect(all.map((e) => e.level),
+          [LogLevel.debug, LogLevel.info, LogLevel.warn, LogLevel.error]);
     });
 
     test('traceId is validated and passed to LogEntry', () async {
@@ -74,19 +75,23 @@ void main() {
     });
 
     test('throws on invalid traceId', () {
-      expect(() => OpenTelemetryLogger(
-        backend: backend,
-        flushInterval: const Duration(seconds: 1),
-        batchSize: 1,
-        traceId: 'short',
-      ), throwsArgumentError);
+      expect(
+          () => OpenTelemetryLogger(
+                backend: backend,
+                flushInterval: const Duration(seconds: 1),
+                batchSize: 1,
+                traceId: 'short',
+              ),
+          throwsArgumentError);
       expect(() => logger.info('msg', traceId: 'short'), throwsArgumentError);
     });
 
     test('close flushes all logs and disposes backend', () async {
       logger.info('msg1');
       await logger.close();
-      expect(backend.sentBatches.expand((b) => b).any((e) => e.message == 'msg1'), isTrue);
+      expect(
+          backend.sentBatches.expand((b) => b).any((e) => e.message == 'msg1'),
+          isTrue);
       expect(backend.disposed, isTrue);
     });
 
@@ -98,4 +103,3 @@ void main() {
     });
   });
 }
-

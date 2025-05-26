@@ -10,7 +10,6 @@ class OpenTelemetryLogger {
   final String? _traceId;
   final List<LogEntry> _batch = [];
   final int _batchSize;
-  var _sending = false;
   late final Timer _timer;
 
   /// Creates an OpenTelemetry logger that sends logs to the specified [backend]
@@ -87,33 +86,21 @@ class OpenTelemetryLogger {
   Future<void> close() async {
     _timer.cancel();
 
-    // Flush remaining logs. If we are sending AND new logs came in, we need to
-    // retry
-    while (_batch.isNotEmpty) {
-      await flush();
-      if (_batch.isNotEmpty) {
-        await Future.delayed(const Duration(milliseconds: 100));
-      }
-    }
+    await flush();
     await _backend.dispose();
   }
 
   /// Flushes the current batch of logs to the backend if none are currently
   /// being sent.
   Future<void> flush() async {
-    if (_sending || _batch.isEmpty) {
+    if (_batch.isEmpty) {
       return;
     }
 
-    _sending = true;
     final entries = List<LogEntry>.from(_batch, growable: false);
     _batch.clear();
     try {
       await _backend.sendLogs(entries);
-    } catch (e) {
-      // Optionally handle errors (e.g., retry, log locally)
-    } finally {
-      _sending = false;
-    }
+    } catch (_) {}
   }
 }
