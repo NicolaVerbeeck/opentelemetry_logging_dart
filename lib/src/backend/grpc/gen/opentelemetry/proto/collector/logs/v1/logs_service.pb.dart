@@ -2,7 +2,7 @@
 //  Generated code. Do not modify.
 //  source: opentelemetry/proto/collector/logs/v1/logs_service.proto
 //
-// @dart = 2.12
+// @dart = 3.3
 
 // ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
@@ -15,6 +15,8 @@ import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import '../../../logs/v1/logs.pb.dart' as $1;
+
+export 'package:protobuf/protobuf.dart' show GeneratedMessageGenericExtensions;
 
 class ExportLogsServiceRequest extends $pb.GeneratedMessage {
   factory ExportLogsServiceRequest({
@@ -44,14 +46,10 @@ class ExportLogsServiceRequest extends $pb.GeneratedMessage {
         subBuilder: $1.ResourceLogs.create)
     ..hasRequiredFields = false;
 
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   ExportLogsServiceRequest clone() =>
       ExportLogsServiceRequest()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   ExportLogsServiceRequest copyWith(
           void Function(ExportLogsServiceRequest) updates) =>
       super.copyWith((message) => updates(message as ExportLogsServiceRequest))
@@ -75,7 +73,7 @@ class ExportLogsServiceRequest extends $pb.GeneratedMessage {
   /// data from multiple origins typically batch the data before forwarding further and
   /// in that case this array will contain multiple elements.
   @$pb.TagNumber(1)
-  $core.List<$1.ResourceLogs> get resourceLogs => $_getList(0);
+  $pb.PbList<$1.ResourceLogs> get resourceLogs => $_getList(0);
 }
 
 class ExportLogsServiceResponse extends $pb.GeneratedMessage {
@@ -105,14 +103,10 @@ class ExportLogsServiceResponse extends $pb.GeneratedMessage {
         subBuilder: ExportLogsPartialSuccess.create)
     ..hasRequiredFields = false;
 
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   ExportLogsServiceResponse clone() =>
       ExportLogsServiceResponse()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   ExportLogsServiceResponse copyWith(
           void Function(ExportLogsServiceResponse) updates) =>
       super.copyWith((message) => updates(message as ExportLogsServiceResponse))
@@ -130,32 +124,32 @@ class ExportLogsServiceResponse extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<ExportLogsServiceResponse>(create);
   static ExportLogsServiceResponse? _defaultInstance;
 
-  ///  The details of a partially successful export request.
+  /// The details of a partially successful export request.
   ///
-  ///  If the request is only partially accepted
-  ///  (i.e. when the server accepts only parts of the data and rejects the rest)
-  ///  the server MUST initialize the `partial_success` field and MUST
-  ///  set the `rejected_<signal>` with the number of items it rejected.
+  /// If the request is only partially accepted
+  /// (i.e. when the server accepts only parts of the data and rejects the rest)
+  /// the server MUST initialize the `partial_success` field and MUST
+  /// set the `rejected_<signal>` with the number of items it rejected.
   ///
-  ///  Servers MAY also make use of the `partial_success` field to convey
-  ///  warnings/suggestions to senders even when the request was fully accepted.
-  ///  In such cases, the `rejected_<signal>` MUST have a value of `0` and
-  ///  the `error_message` MUST be non-empty.
+  /// Servers MAY also make use of the `partial_success` field to convey
+  /// warnings/suggestions to senders even when the request was fully accepted.
+  /// In such cases, the `rejected_<signal>` MUST have a value of `0` and
+  /// the `error_message` MUST be non-empty.
   ///
-  ///  A `partial_success` message with an empty value (rejected_<signal> = 0 and
-  ///  `error_message` = "") is equivalent to it not being set/present. Senders
-  ///  SHOULD interpret it the same way as in the full success case.
+  /// A `partial_success` message with an empty value (rejected_<signal> = 0 and
+  /// `error_message` = "") is equivalent to it not being set/present. Senders
+  /// SHOULD interpret it the same way as in the full success case.
   @$pb.TagNumber(1)
   ExportLogsPartialSuccess get partialSuccess => $_getN(0);
   @$pb.TagNumber(1)
   set partialSuccess(ExportLogsPartialSuccess v) {
-    setField(1, v);
+    $_setField(1, v);
   }
 
   @$pb.TagNumber(1)
   $core.bool hasPartialSuccess() => $_has(0);
   @$pb.TagNumber(1)
-  void clearPartialSuccess() => clearField(1);
+  void clearPartialSuccess() => $_clearField(1);
   @$pb.TagNumber(1)
   ExportLogsPartialSuccess ensurePartialSuccess() => $_ensure(0);
 }
@@ -191,14 +185,10 @@ class ExportLogsPartialSuccess extends $pb.GeneratedMessage {
     ..aOS(2, _omitFieldNames ? '' : 'errorMessage')
     ..hasRequiredFields = false;
 
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   ExportLogsPartialSuccess clone() =>
       ExportLogsPartialSuccess()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   ExportLogsPartialSuccess copyWith(
           void Function(ExportLogsPartialSuccess) updates) =>
       super.copyWith((message) => updates(message as ExportLogsPartialSuccess))
@@ -216,10 +206,10 @@ class ExportLogsPartialSuccess extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<ExportLogsPartialSuccess>(create);
   static ExportLogsPartialSuccess? _defaultInstance;
 
-  ///  The number of rejected log records.
+  /// The number of rejected log records.
   ///
-  ///  A `rejected_<signal>` field holding a `0` value indicates that the
-  ///  request was fully accepted.
+  /// A `rejected_<signal>` field holding a `0` value indicates that the
+  /// request was fully accepted.
   @$pb.TagNumber(1)
   $fixnum.Int64 get rejectedLogRecords => $_getI64(0);
   @$pb.TagNumber(1)
@@ -230,15 +220,15 @@ class ExportLogsPartialSuccess extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasRejectedLogRecords() => $_has(0);
   @$pb.TagNumber(1)
-  void clearRejectedLogRecords() => clearField(1);
+  void clearRejectedLogRecords() => $_clearField(1);
 
-  ///  A developer-facing human-readable message in English. It should be used
-  ///  either to explain why the server rejected parts of the data during a partial
-  ///  success or to convey warnings/suggestions during a full success. The message
-  ///  should offer guidance on how users can address such issues.
+  /// A developer-facing human-readable message in English. It should be used
+  /// either to explain why the server rejected parts of the data during a partial
+  /// success or to convey warnings/suggestions during a full success. The message
+  /// should offer guidance on how users can address such issues.
   ///
-  ///  error_message is an optional field. An error_message with an empty value
-  ///  is equivalent to it not being set.
+  /// error_message is an optional field. An error_message with an empty value
+  /// is equivalent to it not being set.
   @$pb.TagNumber(2)
   $core.String get errorMessage => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -249,7 +239,7 @@ class ExportLogsPartialSuccess extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasErrorMessage() => $_has(1);
   @$pb.TagNumber(2)
-  void clearErrorMessage() => clearField(2);
+  void clearErrorMessage() => $_clearField(2);
 }
 
 const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');

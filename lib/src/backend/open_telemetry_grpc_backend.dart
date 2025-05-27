@@ -18,14 +18,13 @@ class OpenTelemetryGrpcBackend implements OpenTelemetryBackend {
   final bool _ownChannel;
 
   /// Creates an OpenTelemetry backend that sends logs to a specified gRPC endpoint.
-  /// It connects to the specified [host] and [port] with optional [credentials], using
+  /// It connects to the specified [host] and [port], using
   /// [options] for the gRPC channel.
-  OpenTelemetryGrpcBackend(
-      {required String host,
-      int port = 4317,
-      ChannelCredentials? credentials,
-      ChannelOptions options = const ChannelOptions()})
-      : _channel = ClientChannel(
+  OpenTelemetryGrpcBackend({
+    required String host,
+    int port = 4317,
+    ChannelOptions options = const ChannelOptions(),
+  })  : _channel = ClientChannel(
           host,
           port: port,
           options: options,
@@ -84,7 +83,7 @@ class OpenTelemetryGrpcBackend implements OpenTelemetryBackend {
 
 List<int> _hexToBytes(String hex) {
   final len = hex.length;
-  final result = List<int>.filled(len ~/ 2, 0, growable: false);
+  final result = List<int>.filled(len ~/ 2, 0);
   for (var i = 0; i < len; i += 2) {
     final hi = hex.codeUnitAt(i);
     final lo = hex.codeUnitAt(i + 1);

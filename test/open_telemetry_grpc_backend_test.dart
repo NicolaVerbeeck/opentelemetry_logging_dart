@@ -6,6 +6,7 @@ import 'package:opentelemetry_logging/src/model/log_entry.dart';
 import 'package:opentelemetry_logging/src/model/log_level.dart';
 import 'package:test/test.dart';
 
+// ignore: avoid_implementing_value_types
 class MockResponse extends Mock implements ExportLogsServiceResponse {}
 
 class MockLogsServiceClient extends Mock implements LogsServiceClient {}

@@ -1,6 +1,6 @@
-import 'package:test/test.dart';
 import 'package:opentelemetry_logging/src/model/log_entry.dart';
 import 'package:opentelemetry_logging/src/model/log_level.dart';
+import 'package:test/test.dart';
 
 void main() {
   group('LogEntry', () {

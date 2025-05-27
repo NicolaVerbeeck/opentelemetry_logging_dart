@@ -62,8 +62,8 @@ void main() {
             body: any(named: 'body'),
           )).thenAnswer((_) async => mockResponse);
       var called = false;
-      FutureOr<void> onPostError(
-          {required int statusCode, required String body}) {
+      Future<void> onPostError(
+          {required int statusCode, required String body}) async {
         called = true;
         expect(statusCode, 400);
         expect(body, 'bad request');
