@@ -1,6 +1,6 @@
 name: opentelemetry_logging
 description: A simple library implementing sending logs to OpenTelemetry, supports gRPC and HTTP protocols.
-version: 0.1.0
+version: 0.1.1
 repository: https://github.com/NicolaVerbeeck/opentelemetry_logging_dart
 topics:
   - logging

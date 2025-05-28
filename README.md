@@ -25,7 +25,17 @@ Import and use in your Dart code:
 ```dart
 import 'package:opentelemetry_logging/opentelemetry_logging_dart.dart';
 
-// ...existing code...
+// Create logger
+final logger = OpenTelemetryLogger(
+  backend: OpenTelemetryHttpBackend(
+      endpoint: Uri.parse('http://localhost:4318/v1/logs')),
+  batchSize: 10,
+  flushInterval: const Duration(seconds: 5),
+  traceId: '1234567890abcdef1234567890abcdef',
+);
+
+// Use logger
+logger.debug('Hello!');
 ```
 
 ## Contributing
