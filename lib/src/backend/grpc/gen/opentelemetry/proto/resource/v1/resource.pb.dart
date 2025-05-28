@@ -2,7 +2,7 @@
 //  Generated code. Do not modify.
 //  source: opentelemetry/proto/resource/v1/resource.proto
 //
-// @dart = 2.12
+// @dart = 3.3
 
 // ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
@@ -14,6 +14,8 @@ import 'dart:core' as $core;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import '../../common/v1/common.pb.dart' as $0;
+
+export 'package:protobuf/protobuf.dart' show GeneratedMessageGenericExtensions;
 
 /// Resource information.
 class Resource extends $pb.GeneratedMessage {
@@ -57,13 +59,9 @@ class Resource extends $pb.GeneratedMessage {
         subBuilder: $0.EntityRef.create)
     ..hasRequiredFields = false;
 
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   Resource clone() => Resource()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   Resource copyWith(void Function(Resource) updates) =>
       super.copyWith((message) => updates(message as Resource)) as Resource;
 
@@ -82,7 +80,7 @@ class Resource extends $pb.GeneratedMessage {
   /// Attribute keys MUST be unique (it is not allowed to have more than one
   /// attribute with the same key).
   @$pb.TagNumber(1)
-  $core.List<$0.KeyValue> get attributes => $_getList(0);
+  $pb.PbList<$0.KeyValue> get attributes => $_getList(0);
 
   /// dropped_attributes_count is the number of dropped attributes. If the value is 0, then
   /// no attributes were dropped.
@@ -96,15 +94,15 @@ class Resource extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasDroppedAttributesCount() => $_has(1);
   @$pb.TagNumber(2)
-  void clearDroppedAttributesCount() => clearField(2);
+  void clearDroppedAttributesCount() => $_clearField(2);
 
-  ///  Set of entities that participate in this Resource.
+  /// Set of entities that participate in this Resource.
   ///
-  ///  Note: keys in the references MUST exist in attributes of this message.
+  /// Note: keys in the references MUST exist in attributes of this message.
   ///
-  ///  Status: [Development]
+  /// Status: [Development]
   @$pb.TagNumber(3)
-  $core.List<$0.EntityRef> get entityRefs => $_getList(2);
+  $pb.PbList<$0.EntityRef> get entityRefs => $_getList(2);
 }
 
 const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');

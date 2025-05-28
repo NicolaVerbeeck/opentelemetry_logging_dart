@@ -11,7 +11,7 @@ class OpenTelemetryHttpBackend implements OpenTelemetryBackend {
 
   final http.Client _client;
   final bool _ownClient;
-  final FutureOr<void> Function({
+  final Future<void> Function({
     required int statusCode,
     required String body,
   })? _onPostError;
@@ -22,7 +22,7 @@ class OpenTelemetryHttpBackend implements OpenTelemetryBackend {
   OpenTelemetryHttpBackend({
     required Uri endpoint,
     http.Client? client,
-    FutureOr<void> Function({
+    Future<void> Function({
       required int statusCode,
       required String body,
     })? onPostError,

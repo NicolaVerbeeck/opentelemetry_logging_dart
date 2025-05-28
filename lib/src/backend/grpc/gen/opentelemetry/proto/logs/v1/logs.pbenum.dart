@@ -2,7 +2,7 @@
 //  Generated code. Do not modify.
 //  source: opentelemetry/proto/logs/v1/logs.proto
 //
-// @dart = 2.12
+// @dart = 3.3
 
 // ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
@@ -15,6 +15,7 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 /// Possible values for LogRecord.SeverityNumber.
 class SeverityNumber extends $pb.ProtobufEnum {
+  /// UNSPECIFIED is the default SeverityNumber, it MUST NOT be used.
   static const SeverityNumber SEVERITY_NUMBER_UNSPECIFIED =
       SeverityNumber._(0, _omitEnumNames ? '' : 'SEVERITY_NUMBER_UNSPECIFIED');
   static const SeverityNumber SEVERITY_NUMBER_TRACE =
@@ -94,23 +95,28 @@ class SeverityNumber extends $pb.ProtobufEnum {
     SEVERITY_NUMBER_FATAL4,
   ];
 
-  static final $core.Map<$core.int, SeverityNumber> _byValue =
-      $pb.ProtobufEnum.initByValue(values);
-  static SeverityNumber? valueOf($core.int value) => _byValue[value];
+  static final $core.List<SeverityNumber?> _byValue =
+      $pb.ProtobufEnum.$_initByValueList(values, 24);
+  static SeverityNumber? valueOf($core.int value) =>
+      value < 0 || value >= _byValue.length ? null : _byValue[value];
 
-  const SeverityNumber._($core.int v, $core.String n) : super(v, n);
+  const SeverityNumber._(super.v, super.n);
 }
 
-///  LogRecordFlags represents constants used to interpret the
-///  LogRecord.flags field, which is protobuf 'fixed32' type and is to
-///  be used as bit-fields. Each non-zero value defined in this enum is
-///  a bit-mask.  To extract the bit-field, for example, use an
-///  expression like:
+/// LogRecordFlags represents constants used to interpret the
+/// LogRecord.flags field, which is protobuf 'fixed32' type and is to
+/// be used as bit-fields. Each non-zero value defined in this enum is
+/// a bit-mask.  To extract the bit-field, for example, use an
+/// expression like:
 ///
-///    (logRecord.flags & LOG_RECORD_FLAGS_TRACE_FLAGS_MASK)
+///   (logRecord.flags & LOG_RECORD_FLAGS_TRACE_FLAGS_MASK)
 class LogRecordFlags extends $pb.ProtobufEnum {
+  /// The zero value for the enum. Should not be used for comparisons.
+  /// Instead use bitwise "and" with the appropriate mask as shown above.
   static const LogRecordFlags LOG_RECORD_FLAGS_DO_NOT_USE =
       LogRecordFlags._(0, _omitEnumNames ? '' : 'LOG_RECORD_FLAGS_DO_NOT_USE');
+
+  /// Bits 0-7 are used for trace flags.
   static const LogRecordFlags LOG_RECORD_FLAGS_TRACE_FLAGS_MASK =
       LogRecordFlags._(
           255, _omitEnumNames ? '' : 'LOG_RECORD_FLAGS_TRACE_FLAGS_MASK');
@@ -124,7 +130,7 @@ class LogRecordFlags extends $pb.ProtobufEnum {
       $pb.ProtobufEnum.initByValue(values);
   static LogRecordFlags? valueOf($core.int value) => _byValue[value];
 
-  const LogRecordFlags._($core.int v, $core.String n) : super(v, n);
+  const LogRecordFlags._(super.v, super.n);
 }
 
 const _omitEnumNames = $core.bool.fromEnvironment('protobuf.omit_enum_names');

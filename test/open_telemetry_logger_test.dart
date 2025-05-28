@@ -1,8 +1,9 @@
 import 'dart:async';
-import 'package:test/test.dart';
+
 import 'package:opentelemetry_logging/opentelemetry_logging.dart';
 import 'package:opentelemetry_logging/src/model/log_entry.dart';
 import 'package:opentelemetry_logging/src/model/log_level.dart';
+import 'package:test/test.dart';
 
 class MockOpenTelemetryBackend implements OpenTelemetryBackend {
   List<List<LogEntry>> sentBatches = [];

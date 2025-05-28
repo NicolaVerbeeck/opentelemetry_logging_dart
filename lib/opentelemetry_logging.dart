@@ -1,3 +1,4 @@
+/// OpenTelemetry Logging Library
 library;
 
 export 'src/backend/open_telemetry_backend.dart';

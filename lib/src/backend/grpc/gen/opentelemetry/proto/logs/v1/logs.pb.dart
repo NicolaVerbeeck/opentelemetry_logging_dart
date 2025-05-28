@@ -2,7 +2,7 @@
 //  Generated code. Do not modify.
 //  source: opentelemetry/proto/logs/v1/logs.proto
 //
-// @dart = 2.12
+// @dart = 3.3
 
 // ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
@@ -18,18 +18,20 @@ import '../../common/v1/common.pb.dart' as $1;
 import '../../resource/v1/resource.pb.dart' as $0;
 import 'logs.pbenum.dart';
 
+export 'package:protobuf/protobuf.dart' show GeneratedMessageGenericExtensions;
+
 export 'logs.pbenum.dart';
 
-///  LogsData represents the logs data that can be stored in a persistent storage,
-///  OR can be embedded by other protocols that transfer OTLP logs data but do not
-///  implement the OTLP protocol.
+/// LogsData represents the logs data that can be stored in a persistent storage,
+/// OR can be embedded by other protocols that transfer OTLP logs data but do not
+/// implement the OTLP protocol.
 ///
-///  The main difference between this message and collector protocol is that
-///  in this message there will not be any "control" or "metadata" specific to
-///  OTLP protocol.
+/// The main difference between this message and collector protocol is that
+/// in this message there will not be any "control" or "metadata" specific to
+/// OTLP protocol.
 ///
-///  When new fields are added into this message, the OTLP request MUST be updated
-///  as well.
+/// When new fields are added into this message, the OTLP request MUST be updated
+/// as well.
 class LogsData extends $pb.GeneratedMessage {
   factory LogsData({
     $core.Iterable<ResourceLogs>? resourceLogs,
@@ -58,13 +60,9 @@ class LogsData extends $pb.GeneratedMessage {
         subBuilder: ResourceLogs.create)
     ..hasRequiredFields = false;
 
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   LogsData clone() => LogsData()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   LogsData copyWith(void Function(LogsData) updates) =>
       super.copyWith((message) => updates(message as LogsData)) as LogsData;
 
@@ -85,7 +83,7 @@ class LogsData extends $pb.GeneratedMessage {
   /// typically batch the data before forwarding further and in that case this
   /// array will contain multiple elements.
   @$pb.TagNumber(1)
-  $core.List<ResourceLogs> get resourceLogs => $_getList(0);
+  $pb.PbList<ResourceLogs> get resourceLogs => $_getList(0);
 }
 
 /// A collection of ScopeLogs from a Resource.
@@ -127,13 +125,9 @@ class ResourceLogs extends $pb.GeneratedMessage {
     ..aOS(3, _omitFieldNames ? '' : 'schemaUrl')
     ..hasRequiredFields = false;
 
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   ResourceLogs clone() => ResourceLogs()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   ResourceLogs copyWith(void Function(ResourceLogs) updates) =>
       super.copyWith((message) => updates(message as ResourceLogs))
           as ResourceLogs;
@@ -156,19 +150,19 @@ class ResourceLogs extends $pb.GeneratedMessage {
   $0.Resource get resource => $_getN(0);
   @$pb.TagNumber(1)
   set resource($0.Resource v) {
-    setField(1, v);
+    $_setField(1, v);
   }
 
   @$pb.TagNumber(1)
   $core.bool hasResource() => $_has(0);
   @$pb.TagNumber(1)
-  void clearResource() => clearField(1);
+  void clearResource() => $_clearField(1);
   @$pb.TagNumber(1)
   $0.Resource ensureResource() => $_ensure(0);
 
   /// A list of ScopeLogs that originate from a resource.
   @$pb.TagNumber(2)
-  $core.List<ScopeLogs> get scopeLogs => $_getList(1);
+  $pb.PbList<ScopeLogs> get scopeLogs => $_getList(1);
 
   /// The Schema URL, if known. This is the identifier of the Schema that the resource data
   /// is recorded in. Notably, the last part of the URL path is the version number of the
@@ -186,7 +180,7 @@ class ResourceLogs extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $core.bool hasSchemaUrl() => $_has(2);
   @$pb.TagNumber(3)
-  void clearSchemaUrl() => clearField(3);
+  void clearSchemaUrl() => $_clearField(3);
 }
 
 /// A collection of Logs produced by a Scope.
@@ -228,13 +222,9 @@ class ScopeLogs extends $pb.GeneratedMessage {
     ..aOS(3, _omitFieldNames ? '' : 'schemaUrl')
     ..hasRequiredFields = false;
 
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   ScopeLogs clone() => ScopeLogs()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   ScopeLogs copyWith(void Function(ScopeLogs) updates) =>
       super.copyWith((message) => updates(message as ScopeLogs)) as ScopeLogs;
 
@@ -256,19 +246,19 @@ class ScopeLogs extends $pb.GeneratedMessage {
   $1.InstrumentationScope get scope => $_getN(0);
   @$pb.TagNumber(1)
   set scope($1.InstrumentationScope v) {
-    setField(1, v);
+    $_setField(1, v);
   }
 
   @$pb.TagNumber(1)
   $core.bool hasScope() => $_has(0);
   @$pb.TagNumber(1)
-  void clearScope() => clearField(1);
+  void clearScope() => $_clearField(1);
   @$pb.TagNumber(1)
   $1.InstrumentationScope ensureScope() => $_ensure(0);
 
   /// A list of log records.
   @$pb.TagNumber(2)
-  $core.List<LogRecord> get logRecords => $_getList(1);
+  $pb.PbList<LogRecord> get logRecords => $_getList(1);
 
   /// The Schema URL, if known. This is the identifier of the Schema that the log data
   /// is recorded in. Notably, the last part of the URL path is the version number of the
@@ -285,7 +275,7 @@ class ScopeLogs extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $core.bool hasSchemaUrl() => $_has(2);
   @$pb.TagNumber(3)
-  void clearSchemaUrl() => clearField(3);
+  void clearSchemaUrl() => $_clearField(3);
 }
 
 /// A log record according to OpenTelemetry Log Data Model:
@@ -380,13 +370,9 @@ class LogRecord extends $pb.GeneratedMessage {
     ..aOS(12, _omitFieldNames ? '' : 'eventName')
     ..hasRequiredFields = false;
 
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   LogRecord clone() => LogRecord()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   LogRecord copyWith(void Function(LogRecord) updates) =>
       super.copyWith((message) => updates(message as LogRecord)) as LogRecord;
 
@@ -414,7 +400,7 @@ class LogRecord extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasTimeUnixNano() => $_has(0);
   @$pb.TagNumber(1)
-  void clearTimeUnixNano() => clearField(1);
+  void clearTimeUnixNano() => $_clearField(1);
 
   /// Numerical value of the severity, normalized to values described in Log Data Model.
   /// [Optional].
@@ -422,13 +408,13 @@ class LogRecord extends $pb.GeneratedMessage {
   SeverityNumber get severityNumber => $_getN(1);
   @$pb.TagNumber(2)
   set severityNumber(SeverityNumber v) {
-    setField(2, v);
+    $_setField(2, v);
   }
 
   @$pb.TagNumber(2)
   $core.bool hasSeverityNumber() => $_has(1);
   @$pb.TagNumber(2)
-  void clearSeverityNumber() => clearField(2);
+  void clearSeverityNumber() => $_clearField(2);
 
   /// The severity text (also known as log level). The original string representation as
   /// it is known at the source. [Optional].
@@ -442,7 +428,7 @@ class LogRecord extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $core.bool hasSeverityText() => $_has(2);
   @$pb.TagNumber(3)
-  void clearSeverityText() => clearField(3);
+  void clearSeverityText() => $_clearField(3);
 
   /// A value containing the body of the log record. Can be for example a human-readable
   /// string message (including multi-line) describing the event in a free form or it can
@@ -451,13 +437,13 @@ class LogRecord extends $pb.GeneratedMessage {
   $1.AnyValue get body => $_getN(3);
   @$pb.TagNumber(5)
   set body($1.AnyValue v) {
-    setField(5, v);
+    $_setField(5, v);
   }
 
   @$pb.TagNumber(5)
   $core.bool hasBody() => $_has(3);
   @$pb.TagNumber(5)
-  void clearBody() => clearField(5);
+  void clearBody() => $_clearField(5);
   @$pb.TagNumber(5)
   $1.AnyValue ensureBody() => $_ensure(3);
 
@@ -465,7 +451,7 @@ class LogRecord extends $pb.GeneratedMessage {
   /// Attribute keys MUST be unique (it is not allowed to have more than one
   /// attribute with the same key).
   @$pb.TagNumber(6)
-  $core.List<$1.KeyValue> get attributes => $_getList(4);
+  $pb.PbList<$1.KeyValue> get attributes => $_getList(4);
 
   @$pb.TagNumber(7)
   $core.int get droppedAttributesCount => $_getIZ(5);
@@ -477,7 +463,7 @@ class LogRecord extends $pb.GeneratedMessage {
   @$pb.TagNumber(7)
   $core.bool hasDroppedAttributesCount() => $_has(5);
   @$pb.TagNumber(7)
-  void clearDroppedAttributesCount() => clearField(7);
+  void clearDroppedAttributesCount() => $_clearField(7);
 
   /// Flags, a bit field. 8 least significant bits are the trace flags as
   /// defined in W3C Trace Context specification. 24 most significant bits are reserved
@@ -494,19 +480,19 @@ class LogRecord extends $pb.GeneratedMessage {
   @$pb.TagNumber(8)
   $core.bool hasFlags() => $_has(6);
   @$pb.TagNumber(8)
-  void clearFlags() => clearField(8);
+  void clearFlags() => $_clearField(8);
 
-  ///  A unique identifier for a trace. All logs from the same trace share
-  ///  the same `trace_id`. The ID is a 16-byte array. An ID with all zeroes OR
-  ///  of length other than 16 bytes is considered invalid (empty string in OTLP/JSON
-  ///  is zero-length and thus is also invalid).
+  /// A unique identifier for a trace. All logs from the same trace share
+  /// the same `trace_id`. The ID is a 16-byte array. An ID with all zeroes OR
+  /// of length other than 16 bytes is considered invalid (empty string in OTLP/JSON
+  /// is zero-length and thus is also invalid).
   ///
-  ///  This field is optional.
+  /// This field is optional.
   ///
-  ///  The receivers SHOULD assume that the log record is not associated with a
-  ///  trace if any of the following is true:
-  ///    - the field is not present,
-  ///    - the field contains an invalid value.
+  /// The receivers SHOULD assume that the log record is not associated with a
+  /// trace if any of the following is true:
+  ///   - the field is not present,
+  ///   - the field contains an invalid value.
   @$pb.TagNumber(9)
   $core.List<$core.int> get traceId => $_getN(7);
   @$pb.TagNumber(9)
@@ -517,20 +503,20 @@ class LogRecord extends $pb.GeneratedMessage {
   @$pb.TagNumber(9)
   $core.bool hasTraceId() => $_has(7);
   @$pb.TagNumber(9)
-  void clearTraceId() => clearField(9);
+  void clearTraceId() => $_clearField(9);
 
-  ///  A unique identifier for a span within a trace, assigned when the span
-  ///  is created. The ID is an 8-byte array. An ID with all zeroes OR of length
-  ///  other than 8 bytes is considered invalid (empty string in OTLP/JSON
-  ///  is zero-length and thus is also invalid).
+  /// A unique identifier for a span within a trace, assigned when the span
+  /// is created. The ID is an 8-byte array. An ID with all zeroes OR of length
+  /// other than 8 bytes is considered invalid (empty string in OTLP/JSON
+  /// is zero-length and thus is also invalid).
   ///
-  ///  This field is optional. If the sender specifies a valid span_id then it SHOULD also
-  ///  specify a valid trace_id.
+  /// This field is optional. If the sender specifies a valid span_id then it SHOULD also
+  /// specify a valid trace_id.
   ///
-  ///  The receivers SHOULD assume that the log record is not associated with a
-  ///  span if any of the following is true:
-  ///    - the field is not present,
-  ///    - the field contains an invalid value.
+  /// The receivers SHOULD assume that the log record is not associated with a
+  /// span if any of the following is true:
+  ///   - the field is not present,
+  ///   - the field contains an invalid value.
   @$pb.TagNumber(10)
   $core.List<$core.int> get spanId => $_getN(8);
   @$pb.TagNumber(10)
@@ -541,23 +527,23 @@ class LogRecord extends $pb.GeneratedMessage {
   @$pb.TagNumber(10)
   $core.bool hasSpanId() => $_has(8);
   @$pb.TagNumber(10)
-  void clearSpanId() => clearField(10);
+  void clearSpanId() => $_clearField(10);
 
-  ///  Time when the event was observed by the collection system.
-  ///  For events that originate in OpenTelemetry (e.g. using OpenTelemetry Logging SDK)
-  ///  this timestamp is typically set at the generation time and is equal to Timestamp.
-  ///  For events originating externally and collected by OpenTelemetry (e.g. using
-  ///  Collector) this is the time when OpenTelemetry's code observed the event measured
-  ///  by the clock of the OpenTelemetry code. This field MUST be set once the event is
-  ///  observed by OpenTelemetry.
+  /// Time when the event was observed by the collection system.
+  /// For events that originate in OpenTelemetry (e.g. using OpenTelemetry Logging SDK)
+  /// this timestamp is typically set at the generation time and is equal to Timestamp.
+  /// For events originating externally and collected by OpenTelemetry (e.g. using
+  /// Collector) this is the time when OpenTelemetry's code observed the event measured
+  /// by the clock of the OpenTelemetry code. This field MUST be set once the event is
+  /// observed by OpenTelemetry.
   ///
-  ///  For converting OpenTelemetry log data to formats that support only one timestamp or
-  ///  when receiving OpenTelemetry log data by recipients that support only one timestamp
-  ///  internally the following logic is recommended:
-  ///    - Use time_unix_nano if it is present, otherwise use observed_time_unix_nano.
+  /// For converting OpenTelemetry log data to formats that support only one timestamp or
+  /// when receiving OpenTelemetry log data by recipients that support only one timestamp
+  /// internally the following logic is recommended:
+  ///   - Use time_unix_nano if it is present, otherwise use observed_time_unix_nano.
   ///
-  ///  Value is UNIX Epoch time in nanoseconds since 00:00:00 UTC on 1 January 1970.
-  ///  Value of 0 indicates unknown or missing timestamp.
+  /// Value is UNIX Epoch time in nanoseconds since 00:00:00 UTC on 1 January 1970.
+  /// Value of 0 indicates unknown or missing timestamp.
   @$pb.TagNumber(11)
   $fixnum.Int64 get observedTimeUnixNano => $_getI64(9);
   @$pb.TagNumber(11)
@@ -568,18 +554,18 @@ class LogRecord extends $pb.GeneratedMessage {
   @$pb.TagNumber(11)
   $core.bool hasObservedTimeUnixNano() => $_has(9);
   @$pb.TagNumber(11)
-  void clearObservedTimeUnixNano() => clearField(11);
+  void clearObservedTimeUnixNano() => $_clearField(11);
 
-  ///  A unique identifier of event category/type.
-  ///  All events with the same event_name are expected to conform to the same
-  ///  schema for both their attributes and their body.
+  /// A unique identifier of event category/type.
+  /// All events with the same event_name are expected to conform to the same
+  /// schema for both their attributes and their body.
   ///
-  ///  Recommended to be fully qualified and short (no longer than 256 characters).
+  /// Recommended to be fully qualified and short (no longer than 256 characters).
   ///
-  ///  Presence of event_name on the log record identifies this record
-  ///  as an event.
+  /// Presence of event_name on the log record identifies this record
+  /// as an event.
   ///
-  ///  [Optional].
+  /// [Optional].
   @$pb.TagNumber(12)
   $core.String get eventName => $_getSZ(10);
   @$pb.TagNumber(12)
@@ -590,7 +576,7 @@ class LogRecord extends $pb.GeneratedMessage {
   @$pb.TagNumber(12)
   $core.bool hasEventName() => $_has(10);
   @$pb.TagNumber(12)
-  void clearEventName() => clearField(12);
+  void clearEventName() => $_clearField(12);
 }
 
 const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');

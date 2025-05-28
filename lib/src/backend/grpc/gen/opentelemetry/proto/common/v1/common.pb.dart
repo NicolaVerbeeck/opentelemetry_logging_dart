@@ -2,7 +2,7 @@
 //  Generated code. Do not modify.
 //  source: opentelemetry/proto/common/v1/common.proto
 //
-// @dart = 2.12
+// @dart = 3.3
 
 // ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
@@ -13,6 +13,8 @@ import 'dart:core' as $core;
 
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
+
+export 'package:protobuf/protobuf.dart' show GeneratedMessageGenericExtensions;
 
 enum AnyValue_Value {
   stringValue,
@@ -99,13 +101,9 @@ class AnyValue extends $pb.GeneratedMessage {
         7, _omitFieldNames ? '' : 'bytesValue', $pb.PbFieldType.OY)
     ..hasRequiredFields = false;
 
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   AnyValue clone() => AnyValue()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   AnyValue copyWith(void Function(AnyValue) updates) =>
       super.copyWith((message) => updates(message as AnyValue)) as AnyValue;
 
@@ -121,7 +119,7 @@ class AnyValue extends $pb.GeneratedMessage {
   static AnyValue? _defaultInstance;
 
   AnyValue_Value whichValue() => _AnyValue_ValueByTag[$_whichOneof(0)]!;
-  void clearValue() => clearField($_whichOneof(0));
+  void clearValue() => $_clearField($_whichOneof(0));
 
   @$pb.TagNumber(1)
   $core.String get stringValue => $_getSZ(0);
@@ -133,7 +131,7 @@ class AnyValue extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasStringValue() => $_has(0);
   @$pb.TagNumber(1)
-  void clearStringValue() => clearField(1);
+  void clearStringValue() => $_clearField(1);
 
   @$pb.TagNumber(2)
   $core.bool get boolValue => $_getBF(1);
@@ -145,7 +143,7 @@ class AnyValue extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasBoolValue() => $_has(1);
   @$pb.TagNumber(2)
-  void clearBoolValue() => clearField(2);
+  void clearBoolValue() => $_clearField(2);
 
   @$pb.TagNumber(3)
   $fixnum.Int64 get intValue => $_getI64(2);
@@ -157,7 +155,7 @@ class AnyValue extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $core.bool hasIntValue() => $_has(2);
   @$pb.TagNumber(3)
-  void clearIntValue() => clearField(3);
+  void clearIntValue() => $_clearField(3);
 
   @$pb.TagNumber(4)
   $core.double get doubleValue => $_getN(3);
@@ -169,19 +167,19 @@ class AnyValue extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   $core.bool hasDoubleValue() => $_has(3);
   @$pb.TagNumber(4)
-  void clearDoubleValue() => clearField(4);
+  void clearDoubleValue() => $_clearField(4);
 
   @$pb.TagNumber(5)
   ArrayValue get arrayValue => $_getN(4);
   @$pb.TagNumber(5)
   set arrayValue(ArrayValue v) {
-    setField(5, v);
+    $_setField(5, v);
   }
 
   @$pb.TagNumber(5)
   $core.bool hasArrayValue() => $_has(4);
   @$pb.TagNumber(5)
-  void clearArrayValue() => clearField(5);
+  void clearArrayValue() => $_clearField(5);
   @$pb.TagNumber(5)
   ArrayValue ensureArrayValue() => $_ensure(4);
 
@@ -189,13 +187,13 @@ class AnyValue extends $pb.GeneratedMessage {
   KeyValueList get kvlistValue => $_getN(5);
   @$pb.TagNumber(6)
   set kvlistValue(KeyValueList v) {
-    setField(6, v);
+    $_setField(6, v);
   }
 
   @$pb.TagNumber(6)
   $core.bool hasKvlistValue() => $_has(5);
   @$pb.TagNumber(6)
-  void clearKvlistValue() => clearField(6);
+  void clearKvlistValue() => $_clearField(6);
   @$pb.TagNumber(6)
   KeyValueList ensureKvlistValue() => $_ensure(5);
 
@@ -209,7 +207,7 @@ class AnyValue extends $pb.GeneratedMessage {
   @$pb.TagNumber(7)
   $core.bool hasBytesValue() => $_has(6);
   @$pb.TagNumber(7)
-  void clearBytesValue() => clearField(7);
+  void clearBytesValue() => $_clearField(7);
 }
 
 /// ArrayValue is a list of AnyValue messages. We need ArrayValue as a message
@@ -241,13 +239,9 @@ class ArrayValue extends $pb.GeneratedMessage {
         subBuilder: AnyValue.create)
     ..hasRequiredFields = false;
 
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   ArrayValue clone() => ArrayValue()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   ArrayValue copyWith(void Function(ArrayValue) updates) =>
       super.copyWith((message) => updates(message as ArrayValue)) as ArrayValue;
 
@@ -264,7 +258,7 @@ class ArrayValue extends $pb.GeneratedMessage {
 
   /// Array of values. The array may be empty (contain 0 elements).
   @$pb.TagNumber(1)
-  $core.List<AnyValue> get values => $_getList(0);
+  $pb.PbList<AnyValue> get values => $_getList(0);
 }
 
 /// KeyValueList is a list of KeyValue messages. We need KeyValueList as a message
@@ -299,13 +293,9 @@ class KeyValueList extends $pb.GeneratedMessage {
         subBuilder: KeyValue.create)
     ..hasRequiredFields = false;
 
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   KeyValueList clone() => KeyValueList()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   KeyValueList copyWith(void Function(KeyValueList) updates) =>
       super.copyWith((message) => updates(message as KeyValueList))
           as KeyValueList;
@@ -327,7 +317,7 @@ class KeyValueList extends $pb.GeneratedMessage {
   /// The keys MUST be unique (it is not allowed to have more than one
   /// value with the same key).
   @$pb.TagNumber(1)
-  $core.List<KeyValue> get values => $_getList(0);
+  $pb.PbList<KeyValue> get values => $_getList(0);
 }
 
 /// KeyValue is a key-value pair that is used to store Span attributes, Link
@@ -364,13 +354,9 @@ class KeyValue extends $pb.GeneratedMessage {
         subBuilder: AnyValue.create)
     ..hasRequiredFields = false;
 
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   KeyValue clone() => KeyValue()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   KeyValue copyWith(void Function(KeyValue) updates) =>
       super.copyWith((message) => updates(message as KeyValue)) as KeyValue;
 
@@ -395,19 +381,19 @@ class KeyValue extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasKey() => $_has(0);
   @$pb.TagNumber(1)
-  void clearKey() => clearField(1);
+  void clearKey() => $_clearField(1);
 
   @$pb.TagNumber(2)
   AnyValue get value => $_getN(1);
   @$pb.TagNumber(2)
   set value(AnyValue v) {
-    setField(2, v);
+    $_setField(2, v);
   }
 
   @$pb.TagNumber(2)
   $core.bool hasValue() => $_has(1);
   @$pb.TagNumber(2)
-  void clearValue() => clearField(2);
+  void clearValue() => $_clearField(2);
   @$pb.TagNumber(2)
   AnyValue ensureValue() => $_ensure(1);
 }
@@ -457,14 +443,10 @@ class InstrumentationScope extends $pb.GeneratedMessage {
         4, _omitFieldNames ? '' : 'droppedAttributesCount', $pb.PbFieldType.OU3)
     ..hasRequiredFields = false;
 
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   InstrumentationScope clone() =>
       InstrumentationScope()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   InstrumentationScope copyWith(void Function(InstrumentationScope) updates) =>
       super.copyWith((message) => updates(message as InstrumentationScope))
           as InstrumentationScope;
@@ -492,7 +474,7 @@ class InstrumentationScope extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasName() => $_has(0);
   @$pb.TagNumber(1)
-  void clearName() => clearField(1);
+  void clearName() => $_clearField(1);
 
   @$pb.TagNumber(2)
   $core.String get version => $_getSZ(1);
@@ -504,13 +486,13 @@ class InstrumentationScope extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasVersion() => $_has(1);
   @$pb.TagNumber(2)
-  void clearVersion() => clearField(2);
+  void clearVersion() => $_clearField(2);
 
   /// Additional attributes that describe the scope. [Optional].
   /// Attribute keys MUST be unique (it is not allowed to have more than one
   /// attribute with the same key).
   @$pb.TagNumber(3)
-  $core.List<KeyValue> get attributes => $_getList(2);
+  $pb.PbList<KeyValue> get attributes => $_getList(2);
 
   @$pb.TagNumber(4)
   $core.int get droppedAttributesCount => $_getIZ(3);
@@ -522,13 +504,13 @@ class InstrumentationScope extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   $core.bool hasDroppedAttributesCount() => $_has(3);
   @$pb.TagNumber(4)
-  void clearDroppedAttributesCount() => clearField(4);
+  void clearDroppedAttributesCount() => $_clearField(4);
 }
 
-///  A reference to an Entity.
-///  Entity represents an object of interest associated with produced telemetry: e.g spans, metrics, profiles, or logs.
+/// A reference to an Entity.
+/// Entity represents an object of interest associated with produced telemetry: e.g spans, metrics, profiles, or logs.
 ///
-///  Status: [Development]
+/// Status: [Development]
 class EntityRef extends $pb.GeneratedMessage {
   factory EntityRef({
     $core.String? schemaUrl,
@@ -570,13 +552,9 @@ class EntityRef extends $pb.GeneratedMessage {
     ..pPS(4, _omitFieldNames ? '' : 'descriptionKeys')
     ..hasRequiredFields = false;
 
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   EntityRef clone() => EntityRef()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   EntityRef copyWith(void Function(EntityRef) updates) =>
       super.copyWith((message) => updates(message as EntityRef)) as EntityRef;
 
@@ -591,16 +569,16 @@ class EntityRef extends $pb.GeneratedMessage {
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<EntityRef>(create);
   static EntityRef? _defaultInstance;
 
-  ///  The Schema URL, if known. This is the identifier of the Schema that the entity data
-  ///  is recorded in. To learn more about Schema URL see
-  ///  https://opentelemetry.io/docs/specs/otel/schemas/#schema-url
+  /// The Schema URL, if known. This is the identifier of the Schema that the entity data
+  /// is recorded in. To learn more about Schema URL see
+  /// https://opentelemetry.io/docs/specs/otel/schemas/#schema-url
   ///
-  ///  This schema_url applies to the data in this message and to the Resource attributes
-  ///  referenced by id_keys and description_keys.
-  ///  TODO: discuss if we are happy with this somewhat complicated definition of what
-  ///  the schema_url applies to.
+  /// This schema_url applies to the data in this message and to the Resource attributes
+  /// referenced by id_keys and description_keys.
+  /// TODO: discuss if we are happy with this somewhat complicated definition of what
+  /// the schema_url applies to.
   ///
-  ///  This field obsoletes the schema_url field in ResourceMetrics/ResourceSpans/ResourceLogs.
+  /// This field obsoletes the schema_url field in ResourceMetrics/ResourceSpans/ResourceLogs.
   @$pb.TagNumber(1)
   $core.String get schemaUrl => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -611,7 +589,7 @@ class EntityRef extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasSchemaUrl() => $_has(0);
   @$pb.TagNumber(1)
-  void clearSchemaUrl() => clearField(1);
+  void clearSchemaUrl() => $_clearField(1);
 
   /// Defines the type of the entity. MUST not change during the lifetime of the entity.
   /// For example: "service" or "host". This field is required and MUST not be empty
@@ -626,20 +604,20 @@ class EntityRef extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasType() => $_has(1);
   @$pb.TagNumber(2)
-  void clearType() => clearField(2);
+  void clearType() => $_clearField(2);
 
   /// Attribute Keys that identify the entity.
   /// MUST not change during the lifetime of the entity. The Id must contain at least one attribute.
   /// These keys MUST exist in the containing {message}.attributes.
   @$pb.TagNumber(3)
-  $core.List<$core.String> get idKeys => $_getList(2);
+  $pb.PbList<$core.String> get idKeys => $_getList(2);
 
   /// Descriptive (non-identifying) attribute keys of the entity.
   /// MAY change over the lifetime of the entity. MAY be empty.
   /// These attribute keys are not part of entity's identity.
   /// These keys MUST exist in the containing {message}.attributes.
   @$pb.TagNumber(4)
-  $core.List<$core.String> get descriptionKeys => $_getList(3);
+  $pb.PbList<$core.String> get descriptionKeys => $_getList(3);
 }
 
 const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
