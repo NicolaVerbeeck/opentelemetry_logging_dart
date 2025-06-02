@@ -1,5 +1,6 @@
 import 'package:fixnum/fixnum.dart';
-import 'package:grpc/grpc.dart';
+import 'package:grpc/grpc_connection_interface.dart';
+import 'package:grpc/grpc_or_grpcweb.dart';
 import 'package:opentelemetry_logging/src/backend/open_telemetry_backend.dart';
 import 'package:opentelemetry_logging/src/model/log_entry.dart';
 import 'package:opentelemetry_logging/src/model/log_level.dart';
@@ -13,7 +14,7 @@ import 'grpc/gen/opentelemetry/proto/resource/v1/resource.pb.dart'
 
 /// An OpenTelemetry backend that sends logs to a specified gRPC endpoint.
 class OpenTelemetryGrpcBackend implements OpenTelemetryBackend {
-  final ClientChannel? _channel;
+  final GrpcOrGrpcWebClientChannel? _channel;
   late final LogsServiceClient _client;
   final bool _ownChannel;
   final CallOptions? _callOptions;
@@ -28,9 +29,9 @@ class OpenTelemetryGrpcBackend implements OpenTelemetryBackend {
     ChannelOptions options = const ChannelOptions(),
     CallOptions? callOptions,
     Future<void> Function(
-        Object error,
+      Object error,
     )? onSubmitError,
-  })  : _channel = ClientChannel(
+  })  : _channel = GrpcOrGrpcWebClientChannel.grpc(
           host,
           port: port,
           options: options,
@@ -46,10 +47,10 @@ class OpenTelemetryGrpcBackend implements OpenTelemetryBackend {
   /// Creates an OpenTelemetry backend that uses an existing [channel].
   /// The channel will not be closed automatically upon [dispose].
   OpenTelemetryGrpcBackend.withChannel({
-    required ClientChannel channel,
+    required GrpcOrGrpcWebClientChannel channel,
     CallOptions? callOptions,
     Future<void> Function(
-        Object error,
+      Object error,
     )? onSubmitError,
   })  : _channel = channel,
         _client = LogsServiceClient(channel),
@@ -63,7 +64,7 @@ class OpenTelemetryGrpcBackend implements OpenTelemetryBackend {
     required LogsServiceClient client,
     CallOptions? callOptions,
     Future<void> Function(
-        Object error,
+      Object error,
     )? onSubmitError,
   })  : _client = client,
         _ownChannel = false,

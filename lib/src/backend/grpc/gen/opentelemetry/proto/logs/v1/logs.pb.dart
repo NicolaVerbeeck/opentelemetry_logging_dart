@@ -166,7 +166,7 @@ class ResourceLogs extends $pb.GeneratedMessage {
 
   /// The Schema URL, if known. This is the identifier of the Schema that the resource data
   /// is recorded in. Notably, the last part of the URL path is the version number of the
-  /// schema: http[s]://server[:port]/path/<version>. To learn more about Schema URL see
+  /// schema: http[s]://server[:port]/path/version. To learn more about Schema URL see
   /// https://opentelemetry.io/docs/specs/otel/schemas/#schema-url
   /// This schema_url applies to the data in the "resource" field. It does not apply
   /// to the data in the "scope_logs" field which have their own schema_url field.

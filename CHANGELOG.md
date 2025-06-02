@@ -1,3 +1,9 @@
+## 0.3.0
+
+- **Breaking change** Add better support for web in gRPC mode by accepting `GrpcOrGrpcWebClientChannel`
+- Add call options to gRPC backend
+- Add method to receive errors if they occur during the gRPC call
+
 ## 0.2.0
 
 - Upgraded to protobuf ^4.1.0
