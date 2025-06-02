@@ -28,7 +28,7 @@ class OpenTelemetryGrpcBackend implements OpenTelemetryBackend {
     ChannelOptions options = const ChannelOptions(),
     CallOptions? callOptions,
     Future<void> Function(
-        Object error,
+      Object error,
     )? onSubmitError,
   })  : _channel = ClientChannel(
           host,
@@ -49,7 +49,7 @@ class OpenTelemetryGrpcBackend implements OpenTelemetryBackend {
     required ClientChannel channel,
     CallOptions? callOptions,
     Future<void> Function(
-        Object error,
+      Object error,
     )? onSubmitError,
   })  : _channel = channel,
         _client = LogsServiceClient(channel),
@@ -63,7 +63,7 @@ class OpenTelemetryGrpcBackend implements OpenTelemetryBackend {
     required LogsServiceClient client,
     CallOptions? callOptions,
     Future<void> Function(
-        Object error,
+      Object error,
     )? onSubmitError,
   })  : _client = client,
         _ownChannel = false,
