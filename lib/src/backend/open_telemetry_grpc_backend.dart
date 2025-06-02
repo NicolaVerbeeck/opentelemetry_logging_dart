@@ -16,6 +16,8 @@ class OpenTelemetryGrpcBackend implements OpenTelemetryBackend {
   final ClientChannel? _channel;
   late final LogsServiceClient _client;
   final bool _ownChannel;
+  final CallOptions? _callOptions;
+  final Future<void> Function(Object error)? _onSubmitError;
 
   /// Creates an OpenTelemetry backend that sends logs to a specified gRPC endpoint.
   /// It connects to the specified [host] and [port], using
@@ -24,12 +26,18 @@ class OpenTelemetryGrpcBackend implements OpenTelemetryBackend {
     required String host,
     int port = 4317,
     ChannelOptions options = const ChannelOptions(),
+    CallOptions? callOptions,
+    Future<void> Function(
+        Object error,
+    )? onSubmitError,
   })  : _channel = ClientChannel(
           host,
           port: port,
           options: options,
         ),
-        _ownChannel = true {
+        _ownChannel = true,
+        _callOptions = callOptions,
+        _onSubmitError = onSubmitError {
     _client = LogsServiceClient(
       _channel!,
     );
@@ -39,17 +47,29 @@ class OpenTelemetryGrpcBackend implements OpenTelemetryBackend {
   /// The channel will not be closed automatically upon [dispose].
   OpenTelemetryGrpcBackend.withChannel({
     required ClientChannel channel,
+    CallOptions? callOptions,
+    Future<void> Function(
+        Object error,
+    )? onSubmitError,
   })  : _channel = channel,
         _client = LogsServiceClient(channel),
-        _ownChannel = false;
+        _ownChannel = false,
+        _callOptions = callOptions,
+        _onSubmitError = onSubmitError;
 
   /// Creates an OpenTelemetry backend that uses an existing [client].
   /// The client will not be closed automatically upon [dispose].
   OpenTelemetryGrpcBackend.withClient({
     required LogsServiceClient client,
+    CallOptions? callOptions,
+    Future<void> Function(
+        Object error,
+    )? onSubmitError,
   })  : _client = client,
         _ownChannel = false,
-        _channel = null;
+        _channel = null,
+        _callOptions = callOptions,
+        _onSubmitError = onSubmitError;
 
   @override
   Future<void> sendLogs(List<LogEntry> entries) async {
@@ -59,7 +79,11 @@ class OpenTelemetryGrpcBackend implements OpenTelemetryBackend {
       ..resource = otlp_resource.Resource()
       ..scopeLogs.add(scopeLogs);
     final request = ExportLogsServiceRequest()..resourceLogs.add(resourceLogs);
-    await _client.export(request);
+    try {
+      await _client.export(request, options: _callOptions);
+    } catch (e) {
+      _onSubmitError?.call(e);
+    }
   }
 
   static otlp.LogRecord _logEntryToLogRecord(LogEntry entry) {
