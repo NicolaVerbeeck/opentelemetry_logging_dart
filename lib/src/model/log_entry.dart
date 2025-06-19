@@ -29,6 +29,9 @@ class LogEntry {
     if (labels != null && labels!.isNotEmpty) {
       map['labels'] = labels;
     }
+    if (labels != null && labels!.isNotEmpty) {
+      map['labels'] = labels;
+    }
     return map;
   }
 }
