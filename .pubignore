@@ -3,3 +3,6 @@
 test/
 support/
 coverage.lcov
+.fvmrc
+.dart_tool/
+.github/

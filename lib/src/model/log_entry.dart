@@ -5,16 +5,18 @@ class LogEntry {
   final String? message;
   final DateTime timestamp;
   final String? traceId;
+  final Map<String, String>? labels;
 
   LogEntry(
     this.level,
     this.message, {
     this.traceId,
+    this.labels,
   }) : timestamp = DateTime.now();
 
   Map<String, dynamic> toJson() {
     final timeUnixNano = (timestamp.microsecondsSinceEpoch * 1000).toString();
-    final map = {
+    final map = <String, dynamic>{
       'timeUnixNano': timeUnixNano,
       'observedTimeUnixNano': timeUnixNano,
       'severityNumber': _severityNumber(level),
@@ -22,7 +24,10 @@ class LogEntry {
       'body': {'stringValue': message},
     };
     if (traceId != null) {
-      map['traceId'] = traceId!;
+      map['traceId'] = traceId;
+    }
+    if (labels != null && labels!.isNotEmpty) {
+      map['labels'] = labels;
     }
     return map;
   }
