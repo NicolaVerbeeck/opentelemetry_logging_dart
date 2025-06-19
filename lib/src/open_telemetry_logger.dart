@@ -11,6 +11,7 @@ class OpenTelemetryLogger {
   final List<LogEntry> _batch = [];
   final int _batchSize;
   late final Timer _timer;
+  final Map<String, String> _labels;
 
   /// Creates an OpenTelemetry logger that sends logs to the specified [backend]
   /// The logs are sent either when the batch reaches the specified [batchSize]
@@ -21,9 +22,11 @@ class OpenTelemetryLogger {
     required Duration flushInterval,
     required int batchSize,
     String? traceId,
+    Map<String, String>? labels,
   })  : _backend = backend,
         _traceId = traceId,
-        _batchSize = batchSize {
+        _batchSize = batchSize,
+        _labels = labels ?? const {} {
     if (traceId != null && traceId.length != 32) {
       throw ArgumentError.value(
         traceId,
@@ -31,7 +34,6 @@ class OpenTelemetryLogger {
         'Trace ID must be a 32-character hexadecimal string.',
       );
     }
-
     _timer = Timer.periodic(
       flushInterval,
       (_) => unawaited(flush()),
@@ -74,7 +76,14 @@ class OpenTelemetryLogger {
         'Trace ID must be a 32-character hexadecimal string.',
       );
     }
-    _batch.add(LogEntry(level, message?.toString(), traceId: traceId));
+    _batch.add(
+      LogEntry(
+        level,
+        message?.toString(),
+        traceId: traceId,
+        labels: _labels,
+      ),
+    );
     if (_batch.length >= _batchSize) {
       unawaited(flush());
     }
