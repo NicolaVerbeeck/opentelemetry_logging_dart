@@ -10,6 +10,10 @@
 - Upgraded to lints ^6.0.0
 - Require Dart SDK ^3.6.0
 
+## 0.1.3
+
+- Fixed wrong labels implementation. **Breaking change**: labels are now called attributes.
+
 ## 0.1.2
 
 - Added support for labels

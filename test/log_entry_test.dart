@@ -38,4 +38,27 @@ void main() {
       expect(severityText(LogLevel.error), 'ERROR');
     });
   });
+
+  group('Attributes', () {
+    test('toJson serializes attributes', () {
+      final entry =
+          LogEntry(LogLevel.info, 'test', attributes: {'hello': 'world'});
+      expect(entry.toJson()['attributes'], [
+        {
+          'key': 'hello',
+          'value': {'stringValue': 'world'}
+        }
+      ]);
+    });
+
+    test('toJson skips not passed attributes', () {
+      final entry = LogEntry(LogLevel.info, 'test');
+      expect(entry.toJson()['attributes'], isNull);
+    });
+
+    test('toJson skips empty attributes', () {
+      final entry = LogEntry(LogLevel.info, 'test', attributes: {});
+      expect(entry.toJson()['attributes'], isNull);
+    });
+  });
 }
