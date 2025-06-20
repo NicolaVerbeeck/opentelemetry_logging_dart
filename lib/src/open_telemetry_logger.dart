@@ -23,7 +23,6 @@ class OpenTelemetryLogger {
     required Duration flushInterval,
     required int batchSize,
     String? traceId,
-    @Deprecated('Use attributes instead of labels')
     Map<String, String>? attributes,
   })  : _backend = backend,
         _traceId = traceId,

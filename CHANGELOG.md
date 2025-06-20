@@ -1,3 +1,7 @@
+## 0.1.4
+
+- Fixed wrong deprecation warning
+
 ## 0.1.3
 
 - Fixed wrong labels implementation. **Breaking change**: labels are now called attributes.
