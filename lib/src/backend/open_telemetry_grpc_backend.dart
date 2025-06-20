@@ -65,15 +65,16 @@ class OpenTelemetryGrpcBackend implements OpenTelemetryBackend {
 
   static otlp.LogRecord _logEntryToLogRecord(LogEntry entry) {
     final timeUnixNano = Int64(entry.timestamp.microsecondsSinceEpoch * 1000);
-    final logRecord = otlp.LogRecord()
-      ..timeUnixNano = timeUnixNano
-      ..observedTimeUnixNano = timeUnixNano
-      ..severityNumber = _mapSeverityLevel(entry.level)
-      ..severityText = severityText(entry.level)
-      ..body = otlp_common.AnyValue(stringValue: entry.message ?? '')
-      ..traceId = entry.traceId != null ? _hexToBytes(entry.traceId!) : [];
-    if (entry.labels != null && entry.labels!.isNotEmpty) {
-      logRecord.attributes.addAll(entry.labels!.entries.map(
+    final logRecord = otlp.LogRecord(
+      timeUnixNano: timeUnixNano,
+      observedTimeUnixNano: timeUnixNano,
+      severityNumber: _mapSeverityLevel(entry.level),
+      severityText: severityText(entry.level),
+      body: otlp_common.AnyValue(stringValue: entry.message ?? ''),
+      traceId: entry.traceId != null ? _hexToBytes(entry.traceId!) : [],
+    );
+    if (entry.attributes != null && entry.attributes!.isNotEmpty) {
+      logRecord.attributes.addAll(entry.attributes!.entries.map(
         (e) => otlp_common.KeyValue(
           key: e.key,
           value: otlp_common.AnyValue(stringValue: e.value),
