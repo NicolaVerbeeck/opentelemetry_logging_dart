@@ -11,22 +11,23 @@ class OpenTelemetryLogger {
   final List<LogEntry> _batch = [];
   final int _batchSize;
   late final Timer _timer;
-  final Map<String, String> _labels;
+  final Map<String, String>? _attributes;
 
   /// Creates an OpenTelemetry logger that sends logs to the specified [backend]
   /// The logs are sent either when the batch reaches the specified [batchSize]
   /// or after the [flushInterval] has passed.
   /// An optional [traceId] can be provided to associate logs with a specific trace.
+  /// Optional [attributes] can be provided that are added as attributes to each log entry.
   OpenTelemetryLogger({
     required OpenTelemetryBackend backend,
     required Duration flushInterval,
     required int batchSize,
     String? traceId,
-    Map<String, String>? labels,
+    Map<String, String>? attributes,
   })  : _backend = backend,
         _traceId = traceId,
         _batchSize = batchSize,
-        _labels = labels ?? const {} {
+        _attributes = attributes {
     if (traceId != null && traceId.length != 32) {
       throw ArgumentError.value(
         traceId,
@@ -81,7 +82,7 @@ class OpenTelemetryLogger {
         level,
         message?.toString(),
         traceId: traceId,
-        labels: _labels,
+        attributes: _attributes,
       ),
     );
     if (_batch.length >= _batchSize) {

@@ -5,13 +5,13 @@ class LogEntry {
   final String? message;
   final DateTime timestamp;
   final String? traceId;
-  final Map<String, String>? labels;
+  final Map<String, String>? attributes;
 
   LogEntry(
     this.level,
     this.message, {
     this.traceId,
-    this.labels,
+    this.attributes,
   }) : timestamp = DateTime.now();
 
   Map<String, dynamic> toJson() {
@@ -26,8 +26,15 @@ class LogEntry {
     if (traceId != null) {
       map['traceId'] = traceId;
     }
-    if (labels != null && labels!.isNotEmpty) {
-      map['labels'] = labels;
+    if (attributes != null && attributes!.isNotEmpty) {
+      map['attributes'] = attributes!.entries
+          .map(
+            (entry) => {
+              'key': entry.key,
+              'value': {'stringValue': entry.value}
+            },
+          )
+          .toList(growable: false);
     }
     return map;
   }
