@@ -1,3 +1,8 @@
+## 0.4.0
+
+- Add support for attributes.
+- Update dependencies
+
 ## 0.3.0
 
 - **Breaking change** Add better support for web in gRPC mode by accepting `GrpcOrGrpcWebClientChannel`
