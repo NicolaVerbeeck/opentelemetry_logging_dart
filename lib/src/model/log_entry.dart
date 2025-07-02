@@ -26,9 +26,6 @@ class LogEntry {
     if (traceId != null) {
       map['traceId'] = traceId;
     }
-    if (labels != null && labels!.isNotEmpty) {
-      map['labels'] = labels;
-    }
     if (attributes != null && attributes!.isNotEmpty) {
       map['attributes'] = attributes!.entries
           .map(
