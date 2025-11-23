@@ -1,13 +1,14 @@
+// This is a generated file - do not edit.
 //
-//  Generated code. Do not modify.
-//  source: opentelemetry/proto/common/v1/common.proto
-//
+// Generated from opentelemetry/proto/common/v1/common.proto.
+
 // @dart = 3.3
 
 // ignore_for_file: annotate_overrides, camel_case_types, comment_references
-// ignore_for_file: constant_identifier_names, library_prefixes
-// ignore_for_file: non_constant_identifier_names, prefer_final_fields
-// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: curly_braces_in_flow_control_structures
+// ignore_for_file: deprecated_member_use_from_same_package, library_prefixes
+// ignore_for_file: non_constant_identifier_names
 
 import 'dart:core' as $core;
 
@@ -27,7 +28,7 @@ enum AnyValue_Value {
   notSet
 }
 
-/// AnyValue is used to represent any type of attribute value. AnyValue may contain a
+/// Represents any type of attribute value. AnyValue may contain a
 /// primitive value such as a string or integer or it may contain an arbitrary nested
 /// object containing arrays, key-value lists and primitives.
 class AnyValue extends $pb.GeneratedMessage {
@@ -40,37 +41,25 @@ class AnyValue extends $pb.GeneratedMessage {
     KeyValueList? kvlistValue,
     $core.List<$core.int>? bytesValue,
   }) {
-    final $result = create();
-    if (stringValue != null) {
-      $result.stringValue = stringValue;
-    }
-    if (boolValue != null) {
-      $result.boolValue = boolValue;
-    }
-    if (intValue != null) {
-      $result.intValue = intValue;
-    }
-    if (doubleValue != null) {
-      $result.doubleValue = doubleValue;
-    }
-    if (arrayValue != null) {
-      $result.arrayValue = arrayValue;
-    }
-    if (kvlistValue != null) {
-      $result.kvlistValue = kvlistValue;
-    }
-    if (bytesValue != null) {
-      $result.bytesValue = bytesValue;
-    }
-    return $result;
+    final result = create();
+    if (stringValue != null) result.stringValue = stringValue;
+    if (boolValue != null) result.boolValue = boolValue;
+    if (intValue != null) result.intValue = intValue;
+    if (doubleValue != null) result.doubleValue = doubleValue;
+    if (arrayValue != null) result.arrayValue = arrayValue;
+    if (kvlistValue != null) result.kvlistValue = kvlistValue;
+    if (bytesValue != null) result.bytesValue = bytesValue;
+    return result;
   }
-  AnyValue._() : super();
-  factory AnyValue.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory AnyValue.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
+
+  AnyValue._();
+
+  factory AnyValue.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory AnyValue.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
 
   static const $core.Map<$core.int, AnyValue_Value> _AnyValue_ValueByTag = {
     1: AnyValue_Value.stringValue,
@@ -91,8 +80,7 @@ class AnyValue extends $pb.GeneratedMessage {
     ..aOS(1, _omitFieldNames ? '' : 'stringValue')
     ..aOB(2, _omitFieldNames ? '' : 'boolValue')
     ..aInt64(3, _omitFieldNames ? '' : 'intValue')
-    ..a<$core.double>(
-        4, _omitFieldNames ? '' : 'doubleValue', $pb.PbFieldType.OD)
+    ..aD(4, _omitFieldNames ? '' : 'doubleValue')
     ..aOM<ArrayValue>(5, _omitFieldNames ? '' : 'arrayValue',
         subBuilder: ArrayValue.create)
     ..aOM<KeyValueList>(6, _omitFieldNames ? '' : 'kvlistValue',
@@ -102,32 +90,44 @@ class AnyValue extends $pb.GeneratedMessage {
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  AnyValue clone() => AnyValue()..mergeFromMessage(this);
+  AnyValue clone() => deepCopy();
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   AnyValue copyWith(void Function(AnyValue) updates) =>
       super.copyWith((message) => updates(message as AnyValue)) as AnyValue;
 
+  @$core.override
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
   static AnyValue create() => AnyValue._();
+  @$core.override
   AnyValue createEmptyInstance() => create();
-  static $pb.PbList<AnyValue> createRepeated() => $pb.PbList<AnyValue>();
   @$core.pragma('dart2js:noInline')
   static AnyValue getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<AnyValue>(create);
   static AnyValue? _defaultInstance;
 
+  @$pb.TagNumber(1)
+  @$pb.TagNumber(2)
+  @$pb.TagNumber(3)
+  @$pb.TagNumber(4)
+  @$pb.TagNumber(5)
+  @$pb.TagNumber(6)
+  @$pb.TagNumber(7)
   AnyValue_Value whichValue() => _AnyValue_ValueByTag[$_whichOneof(0)]!;
+  @$pb.TagNumber(1)
+  @$pb.TagNumber(2)
+  @$pb.TagNumber(3)
+  @$pb.TagNumber(4)
+  @$pb.TagNumber(5)
+  @$pb.TagNumber(6)
+  @$pb.TagNumber(7)
   void clearValue() => $_clearField($_whichOneof(0));
 
   @$pb.TagNumber(1)
   $core.String get stringValue => $_getSZ(0);
   @$pb.TagNumber(1)
-  set stringValue($core.String v) {
-    $_setString(0, v);
-  }
-
+  set stringValue($core.String value) => $_setString(0, value);
   @$pb.TagNumber(1)
   $core.bool hasStringValue() => $_has(0);
   @$pb.TagNumber(1)
@@ -136,10 +136,7 @@ class AnyValue extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool get boolValue => $_getBF(1);
   @$pb.TagNumber(2)
-  set boolValue($core.bool v) {
-    $_setBool(1, v);
-  }
-
+  set boolValue($core.bool value) => $_setBool(1, value);
   @$pb.TagNumber(2)
   $core.bool hasBoolValue() => $_has(1);
   @$pb.TagNumber(2)
@@ -148,10 +145,7 @@ class AnyValue extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $fixnum.Int64 get intValue => $_getI64(2);
   @$pb.TagNumber(3)
-  set intValue($fixnum.Int64 v) {
-    $_setInt64(2, v);
-  }
-
+  set intValue($fixnum.Int64 value) => $_setInt64(2, value);
   @$pb.TagNumber(3)
   $core.bool hasIntValue() => $_has(2);
   @$pb.TagNumber(3)
@@ -160,10 +154,7 @@ class AnyValue extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   $core.double get doubleValue => $_getN(3);
   @$pb.TagNumber(4)
-  set doubleValue($core.double v) {
-    $_setDouble(3, v);
-  }
-
+  set doubleValue($core.double value) => $_setDouble(3, value);
   @$pb.TagNumber(4)
   $core.bool hasDoubleValue() => $_has(3);
   @$pb.TagNumber(4)
@@ -172,10 +163,7 @@ class AnyValue extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   ArrayValue get arrayValue => $_getN(4);
   @$pb.TagNumber(5)
-  set arrayValue(ArrayValue v) {
-    $_setField(5, v);
-  }
-
+  set arrayValue(ArrayValue value) => $_setField(5, value);
   @$pb.TagNumber(5)
   $core.bool hasArrayValue() => $_has(4);
   @$pb.TagNumber(5)
@@ -186,10 +174,7 @@ class AnyValue extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   KeyValueList get kvlistValue => $_getN(5);
   @$pb.TagNumber(6)
-  set kvlistValue(KeyValueList v) {
-    $_setField(6, v);
-  }
-
+  set kvlistValue(KeyValueList value) => $_setField(6, value);
   @$pb.TagNumber(6)
   $core.bool hasKvlistValue() => $_has(5);
   @$pb.TagNumber(6)
@@ -200,10 +185,7 @@ class AnyValue extends $pb.GeneratedMessage {
   @$pb.TagNumber(7)
   $core.List<$core.int> get bytesValue => $_getN(6);
   @$pb.TagNumber(7)
-  set bytesValue($core.List<$core.int> v) {
-    $_setBytes(6, v);
-  }
-
+  set bytesValue($core.List<$core.int> value) => $_setBytes(6, value);
   @$pb.TagNumber(7)
   $core.bool hasBytesValue() => $_has(6);
   @$pb.TagNumber(7)
@@ -216,41 +198,42 @@ class ArrayValue extends $pb.GeneratedMessage {
   factory ArrayValue({
     $core.Iterable<AnyValue>? values,
   }) {
-    final $result = create();
-    if (values != null) {
-      $result.values.addAll(values);
-    }
-    return $result;
+    final result = create();
+    if (values != null) result.values.addAll(values);
+    return result;
   }
-  ArrayValue._() : super();
-  factory ArrayValue.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory ArrayValue.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
+
+  ArrayValue._();
+
+  factory ArrayValue.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory ArrayValue.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       _omitMessageNames ? '' : 'ArrayValue',
       package: const $pb.PackageName(
           _omitMessageNames ? '' : 'opentelemetry.proto.common.v1'),
       createEmptyInstance: create)
-    ..pc<AnyValue>(1, _omitFieldNames ? '' : 'values', $pb.PbFieldType.PM,
+    ..pPM<AnyValue>(1, _omitFieldNames ? '' : 'values',
         subBuilder: AnyValue.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  ArrayValue clone() => ArrayValue()..mergeFromMessage(this);
+  ArrayValue clone() => deepCopy();
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   ArrayValue copyWith(void Function(ArrayValue) updates) =>
       super.copyWith((message) => updates(message as ArrayValue)) as ArrayValue;
 
+  @$core.override
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
   static ArrayValue create() => ArrayValue._();
+  @$core.override
   ArrayValue createEmptyInstance() => create();
-  static $pb.PbList<ArrayValue> createRepeated() => $pb.PbList<ArrayValue>();
   @$core.pragma('dart2js:noInline')
   static ArrayValue getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ArrayValue>(create);
@@ -270,43 +253,43 @@ class KeyValueList extends $pb.GeneratedMessage {
   factory KeyValueList({
     $core.Iterable<KeyValue>? values,
   }) {
-    final $result = create();
-    if (values != null) {
-      $result.values.addAll(values);
-    }
-    return $result;
+    final result = create();
+    if (values != null) result.values.addAll(values);
+    return result;
   }
-  KeyValueList._() : super();
-  factory KeyValueList.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory KeyValueList.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
+
+  KeyValueList._();
+
+  factory KeyValueList.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory KeyValueList.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       _omitMessageNames ? '' : 'KeyValueList',
       package: const $pb.PackageName(
           _omitMessageNames ? '' : 'opentelemetry.proto.common.v1'),
       createEmptyInstance: create)
-    ..pc<KeyValue>(1, _omitFieldNames ? '' : 'values', $pb.PbFieldType.PM,
+    ..pPM<KeyValue>(1, _omitFieldNames ? '' : 'values',
         subBuilder: KeyValue.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  KeyValueList clone() => KeyValueList()..mergeFromMessage(this);
+  KeyValueList clone() => deepCopy();
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   KeyValueList copyWith(void Function(KeyValueList) updates) =>
       super.copyWith((message) => updates(message as KeyValueList))
           as KeyValueList;
 
+  @$core.override
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
   static KeyValueList create() => KeyValueList._();
+  @$core.override
   KeyValueList createEmptyInstance() => create();
-  static $pb.PbList<KeyValueList> createRepeated() =>
-      $pb.PbList<KeyValueList>();
   @$core.pragma('dart2js:noInline')
   static KeyValueList getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<KeyValueList>(create);
@@ -314,35 +297,35 @@ class KeyValueList extends $pb.GeneratedMessage {
 
   /// A collection of key/value pairs of key-value pairs. The list may be empty (may
   /// contain 0 elements).
+  ///
   /// The keys MUST be unique (it is not allowed to have more than one
   /// value with the same key).
+  /// The behavior of software that receives duplicated keys can be unpredictable.
   @$pb.TagNumber(1)
   $pb.PbList<KeyValue> get values => $_getList(0);
 }
 
-/// KeyValue is a key-value pair that is used to store Span attributes, Link
+/// Represents a key-value pair that is used to store Span attributes, Link
 /// attributes, etc.
 class KeyValue extends $pb.GeneratedMessage {
   factory KeyValue({
     $core.String? key,
     AnyValue? value,
   }) {
-    final $result = create();
-    if (key != null) {
-      $result.key = key;
-    }
-    if (value != null) {
-      $result.value = value;
-    }
-    return $result;
+    final result = create();
+    if (key != null) result.key = key;
+    if (value != null) result.value = value;
+    return result;
   }
-  KeyValue._() : super();
-  factory KeyValue.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory KeyValue.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
+
+  KeyValue._();
+
+  factory KeyValue.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory KeyValue.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       _omitMessageNames ? '' : 'KeyValue',
@@ -355,41 +338,38 @@ class KeyValue extends $pb.GeneratedMessage {
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  KeyValue clone() => KeyValue()..mergeFromMessage(this);
+  KeyValue clone() => deepCopy();
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   KeyValue copyWith(void Function(KeyValue) updates) =>
       super.copyWith((message) => updates(message as KeyValue)) as KeyValue;
 
+  @$core.override
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
   static KeyValue create() => KeyValue._();
+  @$core.override
   KeyValue createEmptyInstance() => create();
-  static $pb.PbList<KeyValue> createRepeated() => $pb.PbList<KeyValue>();
   @$core.pragma('dart2js:noInline')
   static KeyValue getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<KeyValue>(create);
   static KeyValue? _defaultInstance;
 
+  /// The key name of the pair.
   @$pb.TagNumber(1)
   $core.String get key => $_getSZ(0);
   @$pb.TagNumber(1)
-  set key($core.String v) {
-    $_setString(0, v);
-  }
-
+  set key($core.String value) => $_setString(0, value);
   @$pb.TagNumber(1)
   $core.bool hasKey() => $_has(0);
   @$pb.TagNumber(1)
   void clearKey() => $_clearField(1);
 
+  /// The value of the pair.
   @$pb.TagNumber(2)
   AnyValue get value => $_getN(1);
   @$pb.TagNumber(2)
-  set value(AnyValue v) {
-    $_setField(2, v);
-  }
-
+  set value(AnyValue value) => $_setField(2, value);
   @$pb.TagNumber(2)
   $core.bool hasValue() => $_has(1);
   @$pb.TagNumber(2)
@@ -407,28 +387,23 @@ class InstrumentationScope extends $pb.GeneratedMessage {
     $core.Iterable<KeyValue>? attributes,
     $core.int? droppedAttributesCount,
   }) {
-    final $result = create();
-    if (name != null) {
-      $result.name = name;
-    }
-    if (version != null) {
-      $result.version = version;
-    }
-    if (attributes != null) {
-      $result.attributes.addAll(attributes);
-    }
-    if (droppedAttributesCount != null) {
-      $result.droppedAttributesCount = droppedAttributesCount;
-    }
-    return $result;
+    final result = create();
+    if (name != null) result.name = name;
+    if (version != null) result.version = version;
+    if (attributes != null) result.attributes.addAll(attributes);
+    if (droppedAttributesCount != null)
+      result.droppedAttributesCount = droppedAttributesCount;
+    return result;
   }
-  InstrumentationScope._() : super();
-  factory InstrumentationScope.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory InstrumentationScope.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
+
+  InstrumentationScope._();
+
+  factory InstrumentationScope.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory InstrumentationScope.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       _omitMessageNames ? '' : 'InstrumentationScope',
@@ -437,52 +412,48 @@ class InstrumentationScope extends $pb.GeneratedMessage {
       createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'name')
     ..aOS(2, _omitFieldNames ? '' : 'version')
-    ..pc<KeyValue>(3, _omitFieldNames ? '' : 'attributes', $pb.PbFieldType.PM,
+    ..pPM<KeyValue>(3, _omitFieldNames ? '' : 'attributes',
         subBuilder: KeyValue.create)
-    ..a<$core.int>(
-        4, _omitFieldNames ? '' : 'droppedAttributesCount', $pb.PbFieldType.OU3)
+    ..aI(4, _omitFieldNames ? '' : 'droppedAttributesCount',
+        fieldType: $pb.PbFieldType.OU3)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  InstrumentationScope clone() =>
-      InstrumentationScope()..mergeFromMessage(this);
+  InstrumentationScope clone() => deepCopy();
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   InstrumentationScope copyWith(void Function(InstrumentationScope) updates) =>
       super.copyWith((message) => updates(message as InstrumentationScope))
           as InstrumentationScope;
 
+  @$core.override
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
   static InstrumentationScope create() => InstrumentationScope._();
+  @$core.override
   InstrumentationScope createEmptyInstance() => create();
-  static $pb.PbList<InstrumentationScope> createRepeated() =>
-      $pb.PbList<InstrumentationScope>();
   @$core.pragma('dart2js:noInline')
   static InstrumentationScope getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<InstrumentationScope>(create);
   static InstrumentationScope? _defaultInstance;
 
+  /// A name denoting the Instrumentation scope.
   /// An empty instrumentation scope name means the name is unknown.
   @$pb.TagNumber(1)
   $core.String get name => $_getSZ(0);
   @$pb.TagNumber(1)
-  set name($core.String v) {
-    $_setString(0, v);
-  }
-
+  set name($core.String value) => $_setString(0, value);
   @$pb.TagNumber(1)
   $core.bool hasName() => $_has(0);
   @$pb.TagNumber(1)
   void clearName() => $_clearField(1);
 
+  /// Defines the version of the instrumentation scope.
+  /// An empty instrumentation scope version means the version is unknown.
   @$pb.TagNumber(2)
   $core.String get version => $_getSZ(1);
   @$pb.TagNumber(2)
-  set version($core.String v) {
-    $_setString(1, v);
-  }
-
+  set version($core.String value) => $_setString(1, value);
   @$pb.TagNumber(2)
   $core.bool hasVersion() => $_has(1);
   @$pb.TagNumber(2)
@@ -491,16 +462,17 @@ class InstrumentationScope extends $pb.GeneratedMessage {
   /// Additional attributes that describe the scope. [Optional].
   /// Attribute keys MUST be unique (it is not allowed to have more than one
   /// attribute with the same key).
+  /// The behavior of software that receives duplicated keys can be unpredictable.
   @$pb.TagNumber(3)
   $pb.PbList<KeyValue> get attributes => $_getList(2);
 
+  /// The number of attributes that were discarded. Attributes
+  /// can be discarded because their keys are too long or because there are too many
+  /// attributes. If this value is 0, then no attributes were dropped.
   @$pb.TagNumber(4)
   $core.int get droppedAttributesCount => $_getIZ(3);
   @$pb.TagNumber(4)
-  set droppedAttributesCount($core.int v) {
-    $_setUnsignedInt32(3, v);
-  }
-
+  set droppedAttributesCount($core.int value) => $_setUnsignedInt32(3, value);
   @$pb.TagNumber(4)
   $core.bool hasDroppedAttributesCount() => $_has(3);
   @$pb.TagNumber(4)
@@ -518,28 +490,22 @@ class EntityRef extends $pb.GeneratedMessage {
     $core.Iterable<$core.String>? idKeys,
     $core.Iterable<$core.String>? descriptionKeys,
   }) {
-    final $result = create();
-    if (schemaUrl != null) {
-      $result.schemaUrl = schemaUrl;
-    }
-    if (type != null) {
-      $result.type = type;
-    }
-    if (idKeys != null) {
-      $result.idKeys.addAll(idKeys);
-    }
-    if (descriptionKeys != null) {
-      $result.descriptionKeys.addAll(descriptionKeys);
-    }
-    return $result;
+    final result = create();
+    if (schemaUrl != null) result.schemaUrl = schemaUrl;
+    if (type != null) result.type = type;
+    if (idKeys != null) result.idKeys.addAll(idKeys);
+    if (descriptionKeys != null) result.descriptionKeys.addAll(descriptionKeys);
+    return result;
   }
-  EntityRef._() : super();
-  factory EntityRef.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory EntityRef.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
+
+  EntityRef._();
+
+  factory EntityRef.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory EntityRef.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       _omitMessageNames ? '' : 'EntityRef',
@@ -553,17 +519,18 @@ class EntityRef extends $pb.GeneratedMessage {
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  EntityRef clone() => EntityRef()..mergeFromMessage(this);
+  EntityRef clone() => deepCopy();
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   EntityRef copyWith(void Function(EntityRef) updates) =>
       super.copyWith((message) => updates(message as EntityRef)) as EntityRef;
 
+  @$core.override
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
   static EntityRef create() => EntityRef._();
+  @$core.override
   EntityRef createEmptyInstance() => create();
-  static $pb.PbList<EntityRef> createRepeated() => $pb.PbList<EntityRef>();
   @$core.pragma('dart2js:noInline')
   static EntityRef getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<EntityRef>(create);
@@ -582,10 +549,7 @@ class EntityRef extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.String get schemaUrl => $_getSZ(0);
   @$pb.TagNumber(1)
-  set schemaUrl($core.String v) {
-    $_setString(0, v);
-  }
-
+  set schemaUrl($core.String value) => $_setString(0, value);
   @$pb.TagNumber(1)
   $core.bool hasSchemaUrl() => $_has(0);
   @$pb.TagNumber(1)
@@ -597,10 +561,7 @@ class EntityRef extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.String get type => $_getSZ(1);
   @$pb.TagNumber(2)
-  set type($core.String v) {
-    $_setString(1, v);
-  }
-
+  set type($core.String value) => $_setString(1, value);
   @$pb.TagNumber(2)
   $core.bool hasType() => $_has(1);
   @$pb.TagNumber(2)
@@ -620,6 +581,7 @@ class EntityRef extends $pb.GeneratedMessage {
   $pb.PbList<$core.String> get descriptionKeys => $_getList(3);
 }
 
-const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
-const _omitMessageNames =
+const $core.bool _omitFieldNames =
+    $core.bool.fromEnvironment('protobuf.omit_field_names');
+const $core.bool _omitMessageNames =
     $core.bool.fromEnvironment('protobuf.omit_message_names');

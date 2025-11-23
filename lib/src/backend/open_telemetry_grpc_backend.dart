@@ -1,11 +1,11 @@
 import 'package:fixnum/fixnum.dart';
 import 'package:grpc/grpc_connection_interface.dart';
 import 'package:grpc/grpc_or_grpcweb.dart';
+import 'package:opentelemetry_logging/src/backend/grpc/gen/opentelemetry/proto/collector/logs/v1/logs_service.pbgrpc.dart';
 import 'package:opentelemetry_logging/src/backend/open_telemetry_backend.dart';
 import 'package:opentelemetry_logging/src/model/log_entry.dart';
 import 'package:opentelemetry_logging/src/model/log_level.dart';
 
-import 'grpc/gen/opentelemetry/proto/collector/logs/v1/logs_service.pbgrpc.dart';
 import 'grpc/gen/opentelemetry/proto/common/v1/common.pb.dart' as otlp_common;
 import 'grpc/gen/opentelemetry/proto/logs/v1/logs.pb.dart' as otlp;
 import 'grpc/gen/opentelemetry/proto/logs/v1/logs.pbenum.dart' as otlp_enum;

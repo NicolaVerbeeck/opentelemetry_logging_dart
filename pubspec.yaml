@@ -1,6 +1,6 @@
 name: opentelemetry_logging
 description: A simple library implementing sending logs to OpenTelemetry, supports gRPC and HTTP protocols.
-version: 0.4.0
+version: 0.5.0
 repository: https://github.com/NicolaVerbeeck/opentelemetry_logging_dart
 topics:
   - logging
@@ -11,9 +11,9 @@ environment:
 
 dependencies:
   fixnum: ^1.1.1
-  grpc: ^4.0.1
+  grpc: ^5.0.0
   http: ^1.4.0
-  protobuf: ">=4.1.0 <6.0.0"
+  protobuf: ^5.0.0
 
 dev_dependencies:
   lint: ^2.8.0
