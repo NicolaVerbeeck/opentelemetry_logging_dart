@@ -13,7 +13,7 @@ dependencies:
   fixnum: ^1.1.1
   grpc: ^5.0.0
   http: ^1.4.0
-  protobuf: ^5.0.0
+  protobuf: ">=5.0.0 <7.0.0"
 
 dev_dependencies:
   lint: ^2.8.0
