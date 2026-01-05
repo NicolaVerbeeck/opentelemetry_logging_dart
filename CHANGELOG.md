@@ -1,3 +1,8 @@
+## 0.6.0
+
+- Upgraded to grpc ^5.1.0
+- Upgraded to protobuf ^6.0.0
+
 ## 0.5.0
 
 - Upgraded to protobuf ^5.0.0
