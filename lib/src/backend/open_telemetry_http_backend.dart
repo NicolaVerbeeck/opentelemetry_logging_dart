@@ -8,6 +8,7 @@ import 'package:opentelemetry_logging/src/model/log_entry.dart';
 /// An OpenTelemetry backend that sends logs to a specified HTTP endpoint.
 class OpenTelemetryHttpBackend implements OpenTelemetryBackend {
   final Uri _endpoint;
+  final Map<String, Object?>? _resourceAttributes;
 
   final http.Client _client;
   final bool _ownClient;
@@ -21,12 +22,14 @@ class OpenTelemetryHttpBackend implements OpenTelemetryBackend {
   /// it will NOT be closed automatically upon [dispose].
   OpenTelemetryHttpBackend({
     required Uri endpoint,
+    Map<String, Object?>? resourceAttributes,
     http.Client? client,
     Future<void> Function({
       required int statusCode,
       required String body,
     })? onPostError,
   })  : _endpoint = endpoint,
+        _resourceAttributes = resourceAttributes,
         _client = client ?? http.Client(),
         _ownClient = client == null,
         _onPostError = onPostError;
@@ -43,7 +46,7 @@ class OpenTelemetryHttpBackend implements OpenTelemetryBackend {
     final payload = jsonEncode({
       'resourceLogs': [
         {
-          'resource': {},
+          'resource': _buildResource(),
           'scopeLogs': [
             {
               'logRecords': entries.map((e) => e.toJson()).toList(),
@@ -64,8 +67,50 @@ class OpenTelemetryHttpBackend implements OpenTelemetryBackend {
           statusCode: res.statusCode,
           body: res.body,
         );
-        return;
       }
     }
+  }
+
+  // ---- OTLP helpers ----
+
+  Map<String, dynamic> _buildResource() {
+    if (_resourceAttributes == null || _resourceAttributes.isEmpty) {
+      return {};
+    }
+
+    return {
+      'attributes': _resourceAttributes.entries.map((e) {
+        return {
+          'key': e.key,
+          'value': _convertAttributeValue(e.value),
+        };
+      }).toList(),
+    };
+  }
+
+  Map<String, dynamic> _convertAttributeValue(Object? value) {
+    if (value == null) {
+      return {'stringValue': 'null'};
+    }
+    if (value is String) {
+      return {'stringValue': value};
+    }
+    if (value is int) {
+      return {'intValue': value};
+    }
+    if (value is double) {
+      return {'doubleValue': value};
+    }
+    if (value is bool) {
+      return {'boolValue': value};
+    }
+    if (value is List) {
+      return {
+        'arrayValue': {
+          'values': value.map(_convertAttributeValue).toList(),
+        },
+      };
+    }
+    return {'stringValue': value.toString()};
   }
 }
