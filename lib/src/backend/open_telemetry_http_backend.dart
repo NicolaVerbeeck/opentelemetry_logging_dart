@@ -90,40 +90,28 @@ class OpenTelemetryHttpBackend implements OpenTelemetryBackend {
   }
 
   Map<String, dynamic> _convertAttributeValue(Object? value) {
-    if (value == null) {
-      return {'stringValue': 'null'};
-    }
-    if (value is String) {
-      return {'stringValue': value};
-    }
-    if (value is int) {
-      return {'intValue': value};
-    }
-    if (value is double) {
-      return {'doubleValue': value};
-    }
-    if (value is bool) {
-      return {'boolValue': value};
-    }
-    if (value is List) {
-      return {
-        'arrayValue': {
-          'values': value.map(_convertAttributeValue).toList(),
+    return switch (value) {
+      null => {'stringValue': 'null'},
+      final String v => {'stringValue': v},
+      final int v => {'intValue': v},
+      final double v => {'doubleValue': v},
+      final bool v => {'boolValue': v},
+      final List v => {
+          'arrayValue': {
+            'values': v.map(_convertAttributeValue).toList(),
+          },
         },
-      };
-    }
-    if (value is Map) {
-      return {
-        'kvlistValue': {
-          'values': value.entries.map((e) {
-            return {
-              'key': e.key.toString(),
-              'value': _convertAttributeValue(e.value),
-            };
-          }).toList(),
+      final Map v => {
+          'kvlistValue': {
+            'values': v.entries.map((e) {
+              return {
+                'key': e.key.toString(),
+                'value': _convertAttributeValue(e.value),
+              };
+            }).toList(),
+          },
         },
-      };
-    }
-    return {'stringValue': value.toString()};
+      _ => {'stringValue': value.toString()},
+    };
   }
 }
