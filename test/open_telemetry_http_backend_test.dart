@@ -145,5 +145,59 @@ void main() {
       expect(capturedBody, contains('"boolValue":true'));
       expect(capturedBody, contains('"arrayValue"'));
     });
+    test('produces empty resource when resourceAttributes is empty', () async {
+      final mockResponse = MockResponse();
+      when(() => mockResponse.statusCode).thenReturn(200);
+      when(() => mockResponse.body).thenReturn('');
+
+      String? capturedBody;
+
+      when(() => mockClient.post(
+            any(),
+            headers: any(named: 'headers'),
+            body: any(named: 'body'),
+          )).thenAnswer((invocation) async {
+        capturedBody = invocation.namedArguments[#body] as String;
+        return mockResponse;
+      });
+
+      final backend = OpenTelemetryHttpBackend(
+        endpoint: endpoint,
+        client: mockClient,
+        resourceAttributes: {},
+      );
+
+      await backend.sendLogs(entries);
+
+      expect(capturedBody, contains('"resource":{}'));
+    });
+    test('serializes double attribute values correctly', () async {
+      final mockResponse = MockResponse();
+      when(() => mockResponse.statusCode).thenReturn(200);
+      when(() => mockResponse.body).thenReturn('');
+
+      String? capturedBody;
+
+      when(() => mockClient.post(
+            any(),
+            headers: any(named: 'headers'),
+            body: any(named: 'body'),
+          )).thenAnswer((invocation) async {
+        capturedBody = invocation.namedArguments[#body] as String;
+        return mockResponse;
+      });
+
+      final backend = OpenTelemetryHttpBackend(
+        endpoint: endpoint,
+        client: mockClient,
+        resourceAttributes: {
+          'ratio': 0.5,
+        },
+      );
+
+      await backend.sendLogs(entries);
+
+      expect(capturedBody, contains('"doubleValue":0.5'));
+    });
   });
 }
