@@ -31,7 +31,7 @@ Add the package to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  opentelemetry_logging_dart: ^latest
+  opentelemetry_logging: ^latest
 ```
 
 Import and use in your Dart code:
