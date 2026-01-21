@@ -107,5 +107,43 @@ void main() {
       await backend.dispose();
       // No error means client not closed
     });
+
+    test('includes resource attributes in payload', () async {
+      final mockResponse = MockResponse();
+      when(() => mockResponse.statusCode).thenReturn(200);
+      when(() => mockResponse.body).thenReturn('');
+
+      String? capturedBody;
+
+      when(() => mockClient.post(
+            any(),
+            headers: any(named: 'headers'),
+            body: any(named: 'body'),
+          )).thenAnswer((invocation) async {
+        capturedBody = invocation.namedArguments[#body] as String;
+        return mockResponse;
+      });
+
+      final backend = OpenTelemetryHttpBackend(
+        endpoint: endpoint,
+        client: mockClient,
+        resourceAttributes: {
+          'service.name': 'test-app',
+          'build': 42,
+          'isDebug': true,
+          'features': ['a', 'b'],
+        },
+      );
+
+      await backend.sendLogs(entries);
+
+      expect(capturedBody, isNotNull);
+      expect(capturedBody, contains('"resource"'));
+      expect(capturedBody, contains('"service.name"'));
+      expect(capturedBody, contains('"test-app"'));
+      expect(capturedBody, contains('"intValue":42'));
+      expect(capturedBody, contains('"boolValue":true'));
+      expect(capturedBody, contains('"arrayValue"'));
+    });
   });
 }
