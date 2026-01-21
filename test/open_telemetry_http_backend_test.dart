@@ -199,5 +199,35 @@ void main() {
 
       expect(capturedBody, contains('"doubleValue":0.5'));
     });
+    test('serializes map attribute values correctly', () async {
+      final mockResponse = MockResponse();
+      when(() => mockResponse.statusCode).thenReturn(200);
+      when(() => mockResponse.body).thenReturn('');
+
+      String? capturedBody;
+
+      when(() => mockClient.post(
+            any(),
+            headers: any(named: 'headers'),
+            body: any(named: 'body'),
+          )).thenAnswer((invocation) async {
+        capturedBody = invocation.namedArguments[#body] as String;
+        return mockResponse;
+      });
+
+      final backend = OpenTelemetryHttpBackend(
+        endpoint: endpoint,
+        client: mockClient,
+        resourceAttributes: {
+          'nested': {'a': 1},
+        },
+      );
+
+      await backend.sendLogs(entries);
+
+      expect(capturedBody, contains('"kvlistValue"'));
+      expect(capturedBody, contains('"a"'));
+      expect(capturedBody, contains('"intValue":1'));
+    });
   });
 }
