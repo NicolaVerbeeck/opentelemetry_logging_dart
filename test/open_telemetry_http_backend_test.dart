@@ -229,5 +229,33 @@ void main() {
       expect(capturedBody, contains('"a"'));
       expect(capturedBody, contains('"intValue":1'));
     });
+    test('serializes null attribute values correctly', () async {
+      final mockResponse = MockResponse();
+      when(() => mockResponse.statusCode).thenReturn(200);
+      when(() => mockResponse.body).thenReturn('');
+
+      String? capturedBody;
+
+      when(() => mockClient.post(
+            any(),
+            headers: any(named: 'headers'),
+            body: any(named: 'body'),
+          )).thenAnswer((invocation) async {
+        capturedBody = invocation.namedArguments[#body] as String;
+        return mockResponse;
+      });
+
+      final backend = OpenTelemetryHttpBackend(
+        endpoint: endpoint,
+        client: mockClient,
+        resourceAttributes: {
+          'nullable': null,
+        },
+      );
+
+      await backend.sendLogs(entries);
+
+      expect(capturedBody, contains('"stringValue":"null"'));
+    });
   });
 }
