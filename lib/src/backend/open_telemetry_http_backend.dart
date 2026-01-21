@@ -74,12 +74,13 @@ class OpenTelemetryHttpBackend implements OpenTelemetryBackend {
   // ---- OTLP helpers ----
 
   Map<String, dynamic> _buildResource() {
-    if (_resourceAttributes == null || _resourceAttributes.isEmpty) {
+    final attrs = _resourceAttributes;
+    if (attrs == null || attrs.isEmpty) {
       return {};
     }
 
     return {
-      'attributes': _resourceAttributes.entries.map((e) {
+      'attributes': attrs.entries.map((e) {
         return {
           'key': e.key,
           'value': _convertAttributeValue(e.value),
