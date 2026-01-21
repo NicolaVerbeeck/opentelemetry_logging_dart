@@ -112,6 +112,18 @@ class OpenTelemetryHttpBackend implements OpenTelemetryBackend {
         },
       };
     }
+    if (value is Map) {
+      return {
+        'kvlistValue': {
+          'values': value.entries.map((e) {
+            return {
+              'key': e.key.toString(),
+              'value': _convertAttributeValue(e.value),
+            };
+          }).toList(),
+        },
+      };
+    }
     return {'stringValue': value.toString()};
   }
 }
