@@ -11,13 +11,27 @@ A Dart package for logging with OpenTelemetry, supporting gRPC backends and seam
 - Simple logging
 - OpenTelemetry protocol support (gRPC and HTTP)
 
+## Resource Attributes
+
+You can attach OpenTelemetry resource attributes to your logs.  
+These are used by observability backends (Grafana, Tempo, Loki, OTel Collector)
+to identify the service emitting the logs.
+
+Common attributes include:
+
+- `service.name`
+- `service.version`
+- `deployment.environment`
+
+Resource attributes support typed values (string, int, bool, arrays).
+
 ## Getting Started
 
 Add the package to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  opentelemetry_logging_dart: ^latest
+  opentelemetry_logging: ^latest
 ```
 
 Import and use in your Dart code:
@@ -28,7 +42,15 @@ import 'package:opentelemetry_logging/opentelemetry_logging_dart.dart';
 // Create logger
 final logger = OpenTelemetryLogger(
   backend: OpenTelemetryHttpBackend(
-      endpoint: Uri.parse('http://localhost:4318/v1/logs')),
+    endpoint: Uri.parse('http://localhost:4318/v1/logs'),
+    resourceAttributes: {
+      'service.name': 'example-app',
+      'service.version': '1.0.0',
+      'deployment.environment': 'dev',
+      'build': 42,
+      'isDebug': true,
+    },
+  ),
   batchSize: 10,
   flushInterval: const Duration(seconds: 5),
   traceId: '1234567890abcdef1234567890abcdef',

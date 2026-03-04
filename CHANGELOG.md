@@ -1,3 +1,7 @@
+## Unreleased
+
+- Added support for OpenTelemetry resource attributes in HTTP backend.
+
 ## 0.6.0
 
 - Upgraded to grpc ^5.1.0

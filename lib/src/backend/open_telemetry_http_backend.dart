@@ -8,6 +8,7 @@ import 'package:opentelemetry_logging/src/model/log_entry.dart';
 /// An OpenTelemetry backend that sends logs to a specified HTTP endpoint.
 class OpenTelemetryHttpBackend implements OpenTelemetryBackend {
   final Uri _endpoint;
+  final Map<String, Object?>? _resourceAttributes;
 
   final http.Client _client;
   final bool _ownClient;
@@ -21,12 +22,14 @@ class OpenTelemetryHttpBackend implements OpenTelemetryBackend {
   /// it will NOT be closed automatically upon [dispose].
   OpenTelemetryHttpBackend({
     required Uri endpoint,
+    Map<String, Object?>? resourceAttributes,
     http.Client? client,
     Future<void> Function({
       required int statusCode,
       required String body,
     })? onPostError,
   })  : _endpoint = endpoint,
+        _resourceAttributes = resourceAttributes,
         _client = client ?? http.Client(),
         _ownClient = client == null,
         _onPostError = onPostError;
@@ -43,7 +46,7 @@ class OpenTelemetryHttpBackend implements OpenTelemetryBackend {
     final payload = jsonEncode({
       'resourceLogs': [
         {
-          'resource': {},
+          'resource': _buildResource(),
           'scopeLogs': [
             {
               'logRecords': entries.map((e) => e.toJson()).toList(),
@@ -64,8 +67,51 @@ class OpenTelemetryHttpBackend implements OpenTelemetryBackend {
           statusCode: res.statusCode,
           body: res.body,
         );
-        return;
       }
     }
+  }
+
+  // ---- OTLP helpers ----
+
+  Map<String, dynamic> _buildResource() {
+    final attrs = _resourceAttributes;
+    if (attrs == null || attrs.isEmpty) {
+      return {};
+    }
+
+    return {
+      'attributes': attrs.entries.map((e) {
+        return {
+          'key': e.key,
+          'value': _convertAttributeValue(e.value),
+        };
+      }).toList(),
+    };
+  }
+
+  Map<String, dynamic> _convertAttributeValue(Object? value) {
+    return switch (value) {
+      null => {'stringValue': 'null'},
+      final String v => {'stringValue': v},
+      final int v => {'intValue': v},
+      final double v => {'doubleValue': v},
+      final bool v => {'boolValue': v},
+      final List v => {
+          'arrayValue': {
+            'values': v.map(_convertAttributeValue).toList(),
+          },
+        },
+      final Map v => {
+          'kvlistValue': {
+            'values': v.entries.map((e) {
+              return {
+                'key': e.key.toString(),
+                'value': _convertAttributeValue(e.value),
+              };
+            }).toList(),
+          },
+        },
+      _ => {'stringValue': value.toString()},
+    };
   }
 }
