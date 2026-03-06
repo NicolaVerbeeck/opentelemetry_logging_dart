@@ -1,4 +1,4 @@
-## Unreleased
+## 0.7.0
 
 - Added support for OpenTelemetry resource attributes in HTTP backend.
 
